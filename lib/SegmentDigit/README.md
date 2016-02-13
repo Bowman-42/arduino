@@ -1,4 +1,4 @@
-	# SegmentDigit
+# SegmentDigit
 
 Drawing 4 digits on (hopefully) every screen using xy coordinates. 
 
