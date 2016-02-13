@@ -9,6 +9,7 @@ A callback is essential, it has to be implemented for the hardware and has to dr
 - u8g:  ( 2 color lcd )
 ```c++
 void drawCallback(int y, int x, int w, int h, boolean del){
+  // Set color , here it is eithor on off 
   u8g.setColorIndex(del ? 0 : 1 );
   u8g.drawBox(y,x,w,h);
 }
@@ -17,10 +18,12 @@ void drawCallback(int y, int x, int w, int h, boolean del){
 Adafruit_TFTLCD ( 16bit color tft )
 ```c++
 void drawCallback(int y, int x, int w, int h, boolean del){
+  // Set color , application needs to take care ... 
   int color = del ? bg_color : char_color;
   tft.fillRect(y, x, w, h, color);
 }
 ```
+
 usage:
 ```c++
 #include <SegmentDigit.h>
