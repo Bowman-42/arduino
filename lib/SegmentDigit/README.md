@@ -1,5 +1,9 @@
 # SegmentDigit
 
+Drawing 4 digits on (hopefully) every screen using xy coordinates. 
+
+### Synopsis:
+
 ```c++
 
     SegmentDigit(int screenwidth, int screenheight);
@@ -30,5 +34,11 @@ void drawCallback(int y, int x, int w, int h, boolean del){
   int color = del ? bg_color : char_color;
   tft.fillRect(y, x, w, h, color);
 }
+
+
+SegmentDigit segmentDigit(screen_w, screen_h);
+and in setup
+  
+  segmentDigit.setCallback(&drawCallback);
 */
 ```
