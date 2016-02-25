@@ -1,0 +1,87 @@
+// #======================================#
+// #     _____       _ _       _  _       #
+// #    |  __ \     (_) |     | || |      #
+// #    | |__) |__ _ _| |___  | || |_     #
+// #    |  _  // _` | | / __| |__   _|    #
+// #    | | \ \ (_| | | \__ \    | |      #
+// #    |_|  \_\__,_|_|_|___/    |_|      #
+// #                                      #
+// #======================================#
+
+// universal BEM pattern for USP icons
+.cw-usp_icon {
+  display: block;
+  padding-left: 2em;
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: auto 1.111em;
+  &--auctioneers { background-image: url("/images/v3/icons/usp_users.svg"); }
+  &--notarial { background-image: url("/images/v3/icons/usp_hammer.svg"); }
+  &--payment { background-image: url("/images/v3/icons/usp_lock.svg"); background-position: 3px 0; }
+  html.lt-ie9 & {
+    &--auctioneers { background-image: url("/images/v3/icons/usp_users.png"); }
+    &--notarial { background-image: url("/images/v3/icons/usp_hammer.png"); }
+    &--payment { background-image: url("/images/v3/icons/usp_lock.png"); }
+  }
+}
+
+#usp { // copy changes to v3-compatibility.css!
+  overflow: hidden;
+  margin: 0 $gutterWidth/2;
+  padding: $gutterHeight/2 0;
+  @include font-size-xs;
+  @include cw_mediaquery("tablet_only") {
+    @include font-size-xxs();
+  }
+  @include cw_mediaquery("mobile") {
+    display: none;
+  }
+  body.v1-v2 & {
+    margin: 0;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    color: $gray;
+    @include flexbox_justify;
+    li {
+      a {
+        position: relative;
+        display: block;
+        margin: 0;
+        padding: 0.333em 0 0.333em 23px; // padding-left differs per icon!
+        background-position: left top;
+        background-repeat: no-repeat;
+        background-size: auto 20px;
+        color: $gray;
+        &.usp-users { background-image: url("/images/v3/icons/usp_users.svg"); padding-left: 30px; }
+        &.usp-hammer { background-image: url("/images/v3/icons/usp_hammer.svg"); padding-left: 30px; }
+        &.usp-lock { background-image: url("/images/v3/icons/usp_lock.svg"); }
+        &.usp-truck { background-image: url("/images/v3/icons/usp_truck.svg"); }
+        &.usp-collection { background-image: url("/images/v3/icons/usp_collection.svg"); padding-left: 26px; }
+        &.usp-search { background-image: url("/images/v3/icons/usp_search.svg"); padding-left: 25px; }
+        &.usp-community { background-image: url("/images/v3/icons/usp_community.svg"); padding-left: 29px; }
+        &.usp-add { background-image: url("/images/v3/icons/usp_add.svg"); padding-left: 25px; }
+        &.usp-pencil { background-image: url("/images/v3/icons/usp_notarial.svg"); padding-left: 25px; }
+        html.lt-ie9 & {
+          &.usp-users { background-image: url("/images/v3/icons/usp_users.png"); }
+          &.usp-hammer { background-image: url("/images/v3/icons/usp_hammer.png"); }
+          &.usp-lock { background-image: url("/images/v3/icons/usp_lock.png"); }
+          &.usp-truck { background-image: url("/images/v3/icons/usp_truck.png"); }
+          &.usp-collection { background-image: url("/images/v3/icons/usp_collection.png"); }
+          &.usp-search { background-image: url("/images/v3/icons/usp_search.png"); }
+          &.usp-community { background-image: url("/images/v3/icons/usp_community.png"); }
+          &.usp-add { background-image: url("/images/v3/icons/usp_add.png"); }
+          &.usp-pencil { background-image: url("/images/v3/icons/usp_notarial.png"); }
+        }
+        &:hover,
+        &:focus {
+          text-decoration: none;
+          //color: $black;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}

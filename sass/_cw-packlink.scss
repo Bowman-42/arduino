@@ -1,0 +1,72 @@
+// only styling for Packlink popup (.cw-packlink)!
+.cw-packlink {
+  #carrier-table {
+    table {
+      @include cw_mediaquery("mobile") {
+        @include font-size-xs();
+        width: 100%;
+        tr {
+          display: block;
+          overflow: hidden;
+          padding-bottom: ($gutterHeight / 2);
+          &:last-child {
+            padding-bottom: 0;
+          }
+          td {
+            display: block;
+            padding: 0;
+          }
+        }
+        strong {
+          float: right;
+          margin-left: ($gutterWidth / 2);
+        }
+        img {
+          float: left;
+          margin-right: ($gutterWidth / 2);
+        }
+        .cw-fontsize-s {
+          @include font-size-xs();
+        }
+      }
+      td {
+        padding-bottom: ($gutterHeight / 2);
+      }
+      tr:last-child {
+        td {
+          padding-bottom: 0;
+        }
+      }
+      strong {
+        white-space: nowrap;
+      }
+      img {
+        border: 1px solid $grayLighterer3;
+        border-radius: 3px;
+      }
+    }
+    .shipping-notice {
+      @include font-size-s();
+    }
+  }
+  .gm-iw {
+    font-family: "ProximaNova", "Helvetica Neue", "Arial", sans-serif;
+    @include font-size-s();
+    .gm-title {
+      @include font-size-s();
+      @include font-weight-medium;
+    }
+  }
+  .collection-points {
+    .cw-extended_select {
+      float: left;
+      width: 80%;
+    }
+    .button {
+      width: 20%;
+      padding-top: ($gutterHeight / 5);
+      padding-bottom: ($gutterHeight / 5);
+      border: 0;
+    }
+  }
+}

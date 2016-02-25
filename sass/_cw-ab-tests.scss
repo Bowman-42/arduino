@@ -1,0 +1,178 @@
+.cw_header_container{
+  .ab_improved_complete_profile_content{
+    display:none;
+  }
+  &.ab_improved_complete_profile{
+    #cw_nav_bar{
+      display:block !important;
+    }
+
+    .complete_profile_content{
+      display:none !important;
+    }
+
+    .ab_improved_complete_profile_content{
+      display:block !important;
+      margin:0;
+      position:absolute;
+      top:100%;
+      left:0;
+      right:0;
+      min-height:$headerHeight_sticky;
+      //width:$width_medium;
+      overflow:hidden;
+      background:$grayLighterer;
+      border:1px solid $grayLighterer2;
+      opacity:0;
+      @include scale(1,0,top,center);
+      transition:transform 200ms ease-in-out, opacity 200ms ease-in-out;
+      transition-delay:100ms;
+      padding:($gutterHeight*0.6) ($gutterWidth*0.75) ($gutterHeight*0.6) ($gutterWidth*1.2);
+      @include box-sizing(border-box);
+
+      .text{
+        line-height:($gutterHeight*1.5);
+        text-transform:none;
+      }
+
+      .close{
+        margin-left:($gutterHeight/2);
+        cursor:pointer;
+        width:($gutterHeight*1.5);
+        height:($gutterHeight*1.5);
+        background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAABGdBTUEAALGPC/xhBQAAAX1JREFUaAXt2kFugzAQBVCn6oKbsOP+1wA2cBAkdlSDZCmt6zbYfyYj871IhKUMfvOdQKI8tm07wo3Gx42sJ5Xg1hNnwky4sQ5wSzcWaMJhwklLGptgwo0FmnCYcNKSxiaYcGOBJhwmnLSksQkmXBPoOI5hXdeaEt9euyxLkJrIAU2467owTRMELY2b5zlITeT4RBbr+/4sJ2gZ8fg8uPAgWKkxDENxjdzpoGA5SUSWojWxsj44uAatjVUDl6AtsKrgK2grrDr4FbQl1gT8F9oaawb+DS1zWpceqZ0bKp/SuZP9vGRpXGdz547z0DutWNTzs2nCz+9ZaUrpzUlNQ83Az9i4td+BNgHnsBFumbQ6OIeN29IarQr+D/sOtBr4Vaw1WgV8FWuJhoNLsVZoKLgWa4GGgvd9h/0sI5/ex3EEqYkcD/4TD9lOh7Vu9+WBYIe7ELokJgxtp8NiTNhhKNAlMWFoOx0WY8IOQ4EuiQlD2+mwGBN2GAp0SbdL+AtQXsWz6RvxMAAAAABJRU5ErkJggg==');
+        background-size:cover;
+        font-size:0;
+      }
+
+      @include cw_mediaquery("tablet_and_smaller"){
+        //height:($gutterHeight*3.5);
+        //width:$width_small;
+
+        .text{
+          line-height:$gutterHeight;
+        }
+
+        .btn{
+          margin:($gutterHeight*0.35) 0 0 $gutterWidth;
+        }
+
+        .close{
+          margin-top:($gutterHeight*0.35);
+        }
+      }
+      @include cw_mediaquery("mobile"){
+        display:none !important;
+      }
+    }
+
+    &.small_header .ab_improved_complete_profile_content{
+      //top:$headerHeight_sticky;
+      opacity:1;
+      transition-delay:1000ms;
+      @include scale(1,1,top,center);
+
+      &.closed{
+        @include scale(1,0,top,center);
+        transition-delay:0ms !important;
+      }
+    }
+  }
+}
+
+#cw_main_international.tld_alert{
+  z-index:200;
+  .cw_dropmenu_trigger {
+    z-index:202;
+  }
+  #tld_alert.cw_dropmenu_content-wrapper{
+    position:absolute;
+    right:0;
+    width:$gutterWidth*17;
+    padding:$gutterWidth*2 !important;
+    border:1px solid $grayLighterer2;
+    background-color: $white !important;
+    z-index:201;
+    text-transform:none;
+
+    #no_thanks{
+      cursor:pointer;
+    }
+  }
+}
+body.show_tld_alert{
+  overflow:hidden !important;
+
+  #cw_main_international.tld_alert:before{
+    content:'';
+    position:absolute;
+    left:-100vw;
+    top:-($gutterHeight*2);
+    width:200vw;
+    height:110vh;
+    opacity:0.5;
+    background:$black;
+    transition:opacity 200ms ease;
+    z-index:200;
+  }
+}
+
+//newsletter exit intent
+#newsletter_exit_intent_content{
+  h1{
+    margin-bottom:($gutterWidth/4);
+  }
+  .control-group{
+    padding:0;
+
+    .cw-form-text{
+      width:100%;
+    }
+    .cw-form-submit{
+      position:absolute;
+      right:0;
+      top:0;
+    }
+    .help-block{
+      padding-bottom:($gutterHeight/2);
+      padding-right:($gutterHeight*4);
+    }
+  }
+  .cw-message.success{
+    margin:0;
+    padding-right:($gutterWidth*3);
+  }
+  @include cw_mediaquery("mobile") {
+    section{
+      text-align:center !important;
+    }
+    img{
+      margin:0 auto $gutterWidth;
+    }
+    .cw-form-submit{
+      position:relative;
+      top:auto;
+      left:auto;
+      width:100%;
+      margin:($gutterWidth/2) 0 0;
+    }
+  }
+  body.cw_lang_fr & {
+    h1{
+      white-space:nowrap !important;
+    }
+  }
+}
+
+//More prominent advantages for registration popup
+#ab_more_prominent_advantages_for_registration{
+  margin-top:-($gutterHeight*1.5);
+  margin-left:-($gutterHeight*1.5);
+  margin-bottom:$gutterHeight;
+  padding:($gutterHeight*1.5) ($gutterHeight*1.5) ($gutterHeight/4);
+  width:200%;
+
+  > *{
+    width:50%;
+  }
+}

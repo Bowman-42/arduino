@@ -1,0 +1,134 @@
+.cw-tabs {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  @include font-weight-medium;
+  @include font-size-l();
+  li {
+    display: inline-block;
+    html.lt-ie8 & {
+      display: inline;
+    }
+    a,
+    span,
+    label {
+      display: block;
+      padding: $gutterHeight/2 $gutterWidth;
+    }
+    a {
+      cursor: pointer;
+    }
+    &.active span,
+    &.active a,
+    &.active label {
+      background-color: $blueLight;
+      color: $black;
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+  }
+  &.cw-tabs-gray {
+    li {
+      &.active span,
+      &.active a,
+      &.active label {
+        background-color: $grayLighterer;
+      }
+    }
+  }
+  &.cw-tabs-lines {
+    margin-bottom: -1px !important;
+    li {
+      a,
+      span,
+      label {
+        display: block;
+        padding: $gutterHeight/2-1 ($gutterWidth)-1;
+        border: 1px solid transparent;
+        border-bottom: none;
+        @include cw_mediaquery("mobile") {
+          padding-left: $gutterWidth/2-1;
+          padding-right: $gutterWidth/2-1;
+        }
+      }
+      &.active span,
+      &.active a,
+      &.active label {
+        border-color: $grayLighterer2;
+        background-color: $white;
+      }
+    }
+  }
+  &.cw-tabs-small {
+    @include font-size-normal();
+    li {
+      a,
+      span,
+      label {
+        padding: $gutterHeight/2 $gutterWidth*0.75;
+        abbr {
+          border: none;
+        }
+      }
+    }
+  }
+  &.cw-tabs-mini {
+    @include font-size-xs();
+    body.cw_lang_en & {
+      @include font-size-xxs();
+    }
+    li {
+      a,
+      span,
+      label {
+        padding: $gutterHeight/4-1 $gutterWidth/4 $gutterHeight/4-3 $gutterWidth/4;
+        body.cw_lang_en & {
+          padding-left: $gutterWidth/5;
+          padding-right: $gutterWidth/5;
+        }
+        abbr {
+          border: none;
+        }
+      }
+    }
+  }
+  @include cw_mediaquery("tablet_and_smaller") {
+    @include font-size-normal();
+    li a,
+    li span,
+    li label {
+      padding: $gutterHeight/2 $gutterWidth/2;
+    }
+  }
+  @include cw_mediaquery("mobile") {
+    li {
+      @include font-size-xs();
+      a,
+      span,
+      label {
+        padding: ($gutterHeight / 4) ($gutterWidth / 2) !important;
+      }
+    }
+  }
+}
+.cw-tabs-header {
+  margin: 0;
+  padding-top: $gutterHeight/4;
+}
+.cw-tabs-content {
+  clear: both;
+  &.cw-tabs-lines {
+    border-top: 1px solid $grayLighterer2;
+  }
+  &.cw-tabs-box {
+    border: 1px solid $grayLighterer2;
+    padding: ($gutterHeight * 1.5 - 1) ($gutterWidth * 1.5 - 1);
+  }
+  &.cw-tabs-gray {
+    background-color: $grayLighterer;
+    padding: ($gutterHeight * 1.5) ($gutterWidth * 1.5);
+  }
+}
