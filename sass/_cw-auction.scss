@@ -1,0 +1,3085 @@
+// #======================================#
+// #     _____       _ _       _  _       #
+// #    |  __ \     (_) |     | || |      #
+// #    | |__) |__ _ _| |___  | || |_     #
+// #    |  _  // _` | | / __| |__   _|    #
+// #    | | \ \ (_| | | \__ \    | |      #
+// #    |_|  \_\__,_|_|_|___/    |_|      #
+// #                                      #
+// #======================================#
+
+.cw-info_auctioneer {
+  $image_size: $gridColumnWidth - $gutterWidth;
+  position: relative;
+  padding: $gutterHeight*0.15 0 0 ($image_size + $gutterWidth/2);
+  min-height: $image_size - $gutterHeight*0.15;
+  @include font-size-s();
+  line-height: 1.42857;
+  .cw-auctioneer-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: $image_size - 2;
+    height: $image_size - 2;
+    overflow: hidden;
+    background-color: $white;
+    border: 1px solid $grayLighterer2;
+    border-radius: $image_size/2 + 1;
+    img {
+      position: absolute;
+      left: $gutterWidth/-2;
+      bottom: $gutterHeight/-2;
+      width: $image_size + $gutterWidth - 2;
+      height: auto;
+    }
+  }
+  ul, p {
+    margin: 0 !important;
+  }
+  a {
+    color: $black;
+    &:hover,
+    &:focus {
+      outline: none;
+      text-decoration: none;
+      .cw-auctioneer-image {
+        border-color: $blue;
+      }
+    }
+    .cw-auctioneer-name {
+      text-decoration: underline;
+    }
+  }
+  p {
+    span,
+    strong {
+      display: block;
+    }
+    .cw-auctioneer-title {
+      @include font-size-normal();
+      @include font-weight-medium;
+    }
+    .cw-auctioneer-name {
+    }
+    strong {
+      a {
+        color: $blue;
+        text-decoration: none;
+      }
+      @include cw_mediaquery("mobile") {
+        &:before {
+          display: none;
+        }
+        a {
+          display: block;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+  &.cw-info_auctioneer-multiple {
+    .cw-auction-header & {
+      $image_size: $gridColumnWidth - $gutterWidth*1.3;
+      float: left;
+      width: $gridColumnWidth*1.5;
+      padding-left: ($image_size + $gutterWidth*0.3);
+      min-height: $image_size - $gutterHeight*0.15;
+      @include font-size-s();
+      .cw-auctioneer-image {
+        width: $image_size - 2;
+        height: $image_size - 2;
+        border-radius: $image_size/2 + 1;
+        img {
+          width: $image_size + $gutterWidth - 2;
+        }
+      }
+      p {
+        .cw-auctioneer-title {
+          @include font-size-s();
+        }
+        strong {
+          @include font-weight-light;
+        }
+      }
+      @include cw_mediaquery("tablet_only") {
+        float: none;
+        width: auto;
+        &#info_auctioneer {
+          margin-bottom: $gutterHeight/2;
+        }
+      }
+      @include cw_mediaquery("mobile") {
+        $image_size: $gridColumnWidth - $gutterWidth*1.6;
+        box-sizing: border-box;
+        width: 50%;
+        margin-top: 0 !important;
+        padding-left: ($image_size + $gutterWidth*0.3);
+        padding-right: $gutterHeight/2;
+        min-height: $image_size - $gutterHeight*0.15;
+        @include font-size-xs();
+        &#info_auctioneer {
+          margin-top: $gutterHeight/2;
+        }
+        .cw-auctioneer-image {
+          width: $image_size - 2;
+          height: $image_size - 2;
+          border-radius: $image_size/2 + 1;
+          img {
+            width: $image_size + $gutterWidth - 2;
+          }
+        }
+        p {
+          .cw-auctioneer-title {
+            @include font-size-xs();
+          }
+        }
+      }
+    }
+    .cw-lot_detail & {
+      $image_size: ($gutterWidth * 2 - 1);
+      min-height: $image_size;
+      padding-left: ($image_size + $gutterWidth*0.3);
+      padding-top: 0;
+      margin-bottom: ($gutterHeight / 4);
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .cw-auctioneer-image {
+        width: $image_size - 2;
+        height: $image_size - 2;
+        border-radius: $image_size/2 + 1;
+        img {
+          width: $image_size + $gutterWidth - 2;
+        }
+      }
+      .cw-auctioneer-title {
+        display: none;
+      }
+      @include cw_mediaquery("mobile") {
+        display: block;
+        float: left;
+        width: 50%;
+        margin: 0 !important;
+        padding-left: 0;
+        text-align: center !important;
+        .cw-auctioneer-image {
+          position: relative;
+          display: inline-block;
+        }
+        .cw-auctioneer-title {
+          display: block;
+          @include font-size-s();
+        }
+      }
+    }
+  }
+  html.mod-js .cw-auction-hide_auctioneers & {
+    visibility: hidden;
+  }
+}
+
+.cw-week_overview {
+  .cw-tabs {
+    @include flexbox_justify;
+  }
+  .cw-tabs-content {
+    padding-top: $gutterHeight/2 - 1;
+  }
+  ul {
+    li {
+      a {
+        color: $black;
+      }
+      &.active {
+        a {
+          color: $blue;
+        }
+      }
+    }
+  }
+}
+.cw-week_overview-list {
+  @include cw_mediaquery("mobile") {
+    display: none;
+  }
+  .cw-box:not(:last-child) {
+    margin-bottom: $gutterHeight;
+  }
+}
+
+
+
+// lot list
+.freeshipping {
+  $freeshipping_width: $gridColumnWidth - $gutterWidth;
+  $freeshipping_corner: $gutterWidth*0.65;
+  position: absolute;
+  right: $gutterWidth/2;
+  width: $freeshipping_width;
+  height: $freeshipping_width;
+  .triangle {
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: ($freeshipping_width) 0 0 ($freeshipping_width);
+    border-color: $blue transparent transparent transparent;
+  }
+  .text {
+    position: absolute;
+    right: $freeshipping_width/-2 + $freeshipping_corner;
+    top: $freeshipping_corner;
+    width: $freeshipping_width;
+    color: $white;
+    @include font-size-xs();
+    @include font-weight-bold;
+    text-align: center;
+    line-height: 1.0;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: top center;
+        -ms-transform-origin: top center;
+            transform-origin: top center;
+  }
+  html.lt-ie9 & {
+    .triangle {
+      display: none;
+    }
+    .text {
+      right: 0;
+      top: 0;
+      width: auto;
+      padding: $gutterHeight/4 $gutterWidth/4;
+      background-color: $blue;
+    }
+  }
+  #lot_list.gallery & {
+    left: 0;
+    right: auto;
+    border-radius: $gutterWidth/4 0 0 0;
+    overflow: hidden;
+    .triangle {
+      border-left-width: 0;
+      border-right-width: $gridColumnWidth - $gutterWidth;
+    }
+    .text {
+      left: $freeshipping_width/-2 + $freeshipping_corner;
+      right: auto;
+      -webkit-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+              transform: rotate(-45deg);
+    }
+    html.lt-ie9 & {
+      overflow: visible;
+      .text {
+        left: 0;
+        right: auto;
+      }
+    }
+  }
+}
+.cw-auction {
+  body.v3 & #flash {
+    p {
+      padding: ($gutterHeight * 0.75) $gutterWidth;
+      @include font-size-l();
+      @include font-weight-medium;
+      text-align: left;
+      @include cw_mediaquery("mobile") {
+        padding: ($gutterHeight / 2) ($gutterWidth / 2);
+        text-align: center;
+      }
+      small {
+        @include font-size-s();
+        @include font-weight-light;
+      }
+      &.notice,
+      &.soft-warning {
+        @include font-size-s();
+        @include font-weight-light;
+      }
+      &#previous_auction_warning {
+        overflow: hidden;
+        padding: ($gutterHeight  / 2) 0;
+        @include cw_mediaquery("mobile") {
+          text-align: left;
+        }
+        img {
+          float: left;
+          margin: 0 ($gutterWidth / 2) 0 0;
+        }
+        &.cw-previous_auction-family,
+        &.cw-previous_auction-friends {
+          @include font-size-normal();
+        }
+        &.cw-previous_auction-sibling,
+        &.cw-previous_auction-self {
+          padding: ($gutterHeight * 0.75) ($gutterWidth / 2) ($gutterHeight * 0.75) $gridColumnWidth;
+          @include font-size-xl();
+          img {
+            width: ($gridColumnWidth - $gutterWidth);
+            height: ($gridColumnWidth - $gutterWidth);
+            margin: ($gutterHeight / -4) 0 ($gutterHeight / -4) ($gridColumnWidth*-1 + $gutterWidth / 2);
+          }
+          @include cw_mediaquery("mobile") {
+            padding-top: ($gutterHeight / 2);
+            padding-bottom: ($gutterHeight / 2);
+            @include font-size-normal();
+            img {
+              margin-top: 0;
+              margin-bottom: 0;
+            }
+            br {
+              display: none;
+            }
+          }
+        }
+        .cw-previous_auction-message {
+          display: block;
+          float: left;
+          width: ($gridColumnWidth * 3 - $gutterWidth * 1.5);
+          padding: 0 ($gutterWidth / 2);
+          @include cw_mediaquery("mobile") {
+            float: none;
+            width: auto;
+            br {
+              display: none;
+            }
+          }
+        }
+        .cw-previous_auction-items {
+          display: block;
+          float: left;
+          overflow: hidden;
+          padding: ($gutterHeight / 4) 0;
+          @include font-size-s();
+          @include cw_mediaquery("mobile") {
+            float: none;
+          }
+          .cw-previous_auction-item {
+            display: block;
+            float: left;
+            width: ($gridColumnWidth * 3 - $gutterWidth);
+            padding: 0 ($gutterWidth / 2);
+            @include font-weight-light;
+            @include cw_mediaquery("tablet_only") {
+              &:nth-child(n+2) {
+                display: none;
+              }
+            }
+            @include cw_mediaquery("mobile") {
+              float: none;
+              width: auto;
+              margin-bottom: ($gutterHeight / 4);
+            }
+            a {
+              display: block;
+              padding-top: ($gutterHeight * 0.35);
+              padding-bottom: ($gutterHeight * 0.35);
+              color: $black;
+              overflow: hidden;
+              img {
+                margin-top: ($gutterHeight * -0.35);
+                margin-bottom: ($gutterHeight * -0.35);
+              }
+            }
+          }
+        }
+        .cw-previous_auction-more {
+          display: block;
+          float: left;
+          width: ($gridColumnWidth * 3 - $gutterWidth * 2);
+          padding: 0 ($gutterWidth / 2);
+          @include cw_mediaquery("mobile") {
+            float: none;
+            width: auto;
+          }
+        }
+        .cw-arrow_link {
+          padding-top: ($gutterHeight);
+          padding-bottom: ($gutterHeight);
+          @include cw_mediaquery("mobile") {
+            padding-top: 0;
+            padding-bottom: 0;
+          }
+          &:before {
+            color: $orange;
+          }
+          &:hover,
+          &:focus {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  .cw-auction-header {
+    position: relative;
+    border-bottom: 1px solid $grayLighterer2;
+    @include cw_mediaquery("mobile") {
+      text-align: center;
+    }
+    .cw-grid {
+      margin-bottom: $gutterHeight;
+      @include cw_mediaquery("mobile") {
+        margin-bottom: 0;
+        .cw-grid-unit {
+          margin-bottom: $gutterHeight;
+        }
+      }
+    }
+    .cw-page_title {
+      text-align: left !important;
+      @include cw_mediaquery("mobile") {
+        text-align: center !important;
+      }
+      h1 {
+        margin-bottom: $gutterHeight/2;
+      }
+      .cw-list-inline {
+        @include font-size-s();
+        a {
+          color: $black;
+        }
+        @include cw_mediaquery("mobile") {
+          @include font-size-xxs();
+        }
+      }
+    }
+    .cw-auction-auctioneer {
+      padding-top: $gutterHeight/4;
+      @include cw_mediaquery("mobile") {
+        display: inline-block;
+        text-align: left;
+      }
+    }
+  }
+  .lot_tag_filters {
+    padding: ($gutterHeight - 1) ($gutterWidth / 2 - 1) ($gutterHeight / 2 - 1) ($gutterWidth / 2 - 1);
+    border-left: 1px solid $grayLighterer2;
+    border-right: 1px solid $grayLighterer2;
+    border-top: 1px solid $grayLighterer2;
+    background-color: $grayLighterer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    @include clearfix;
+    .lot_tag_filters-current {
+      clear: both;
+      padding: 0 ($gutterWidth / 2) 0 ($gutterWidth / 2);
+      strong {
+        margin-right: ($gutterWidth / 2);
+      }
+      a.lot_tag_filters-current-tag {
+        display: inline-block;
+        border: 1px solid $grayLighterer2;
+        margin: 0 ($gutterWidth / 2) ($gutterHeight / 2) 0;
+        padding: ($gutterHeight / 4 - 1) ($gutterWidth / 2 - 1);
+        color: $grayLight;
+        cursor: pointer;
+        &:after {
+          content: "\00D7";
+          margin-left: ($gutterWidth / 4 + 1);
+          color: $black;
+        }
+        &:hover,
+        &:focus {
+          border-color: $grayLight;
+          text-decoration: none;
+          outline: none;
+        }
+      }
+    }
+    .lot_tag_filters-item,
+    .lot_tag_filters-sort .lot_tag_filters-sort-select {
+      position: relative;
+      width: 139px;
+      @include cw_mediaquery("tablet_only") {
+        width: 156px;
+      }
+      @include cw_mediaquery("mobile") {
+        width: 129px;
+      }
+    }
+    .lot_tag_filters-sort {
+      float: right;
+      margin: 0 ($gutterWidth / 2) ($gutterHeight / 2) ($gutterWidth / 2);
+      label,
+      .lot_tag_filters-sort-select {
+        float: left;
+      }
+      label {
+        display: block;
+        padding: ($gutterHeight / 4 + 1) ($gutterWidth / 4);
+      }
+    }
+    .lot_tag_filters-item {
+      float: left;
+      margin: 0 ($gutterWidth / 2) ($gutterHeight / 2) ($gutterWidth / 2);
+      a.cw-custom_select {
+        position: relative;
+        display: block;
+        color: $black;
+        cursor: pointer;
+        transition: none;
+        &:hover,
+        &:focus {
+          text-decoration: none;
+          border-color: $grayLight;
+          outline: none;
+        }
+      }
+      .lot_tag_filters-dropdown {
+        position: absolute;
+        z-index: ($z_menu - 2);
+        visibility: hidden;
+        width: ($gridColumnWidth * 2);
+        background-color: $white;
+        border: 1px solid $grayLight;
+        border-radius: 0 3px 3px 3px;
+        margin-top: ($gutterHeight / 4 + 1);
+        padding: ($gutterHeight / 2 - 1) ($gutterWidth / 2 - 1);
+        -webkit-transform: scale(1,0);
+        -webkit-transform-origin: left top;
+        transition: -webkit-transform 0.15s ease-in-out;
+        transform: scale(1,0);
+        transform-origin: left top;
+        transition: transform 0.15s ease-in-out;
+        @include cw_mediaquery("mobile") {
+          max-width: 100%;
+        }
+        li {
+          &.cw-filter-zero {
+            display: none;
+          }
+        }
+      }
+      &.open {
+        &:before {
+          content: "";
+          position: absolute;
+          z-index: ($z_menu);
+          left: 0;
+          right: 0;
+          top: 100%;
+          margin-top: -1px;
+          height: ($gutterHeight / 2 - 2);
+          border-left: 1px solid $grayLight;
+          border-right: 1px solid $grayLight;
+          background-color: $white;
+        }
+        a.cw-custom_select {
+          z-index: ($z_menu - 1);
+          border-radius: 3px 3px 0 0;
+          border-color: $grayLight;
+          border-bottom-color: $white;
+          .cw-custom_select-button:after {
+            content: "\e0bd";
+          }
+        }
+        .lot_tag_filters-dropdown {
+          visibility: visible;
+          -webkit-transform: scale(1,1);
+          transform: scale(1,1);
+        }
+      }
+    }
+    @include cw_mediaquery("mobile") {
+      padding: ($gutterHeight / 2) 0 0 0;
+      text-align: left;
+    }
+  }
+  .cw-auction-main {
+    margin-top: $gutterHeight*2;
+    .cw-auction-sidebar {
+      .cw-toggle_link,
+      .cw-arrow_link {
+        color: $black;
+        &:hover,
+        &:focus {
+          text-decoration: none;
+          color: $blue;
+        }
+      }
+      .cw-toggle_link {
+        &:before {
+          @include cw_icon_font("\E0BE");
+          line-height: 1.143;
+          color: $blue;
+        }
+      }
+    }
+  }
+  #managed_content {
+    padding-right: $gridColumnWidth*3;
+    @include cw_mediaquery("tablet_and_smaller") {
+      padding-right: 0;
+    }
+    p:first-child {
+      @include font-size-l();
+      @include font-weight-medium;
+    }
+    .polaroid_gallery_widget {
+      overflow: hidden;
+      margin-right: $gridColumnWidth*-3;
+      height: auto !important;
+      @include cw_mediaquery("tablet_and_smaller") {
+        margin-right: 0;
+      }
+      img {
+        &:nth-child(5n+1) {
+          clear: left;
+        }
+        @include cw_mediaquery("tablet_only") {
+          &:nth-child(3n+1) {
+            clear: left;
+          }
+        }
+        @include cw_mediaquery("mobile") {
+          &:nth-child(2n+1) {
+            clear: left;
+          }
+        }
+      }
+    }
+  }
+  .cw-previous_auctions {
+    .cw-columns-column {
+      margin-bottom: $gutterHeight;
+      @include cw_mediaquery("tablet_only") {
+        @include font-size-s();
+      }
+    }
+  }
+  .no-countdown {
+    display:none;
+  }
+  .cw-related_auctions {
+    margin-top: $gutterHeight*2;
+    margin-bottom: $gutterHeight;
+    .cw-horizontal_tiles {
+      @include font-size-s();
+      .cw-list-item {
+        width: $gridColumnWidth*4.5 - $gutterWidth;
+        min-height: $gutterHeight*4.4;
+        margin-bottom: $gutterHeight;
+        @include cw_mediaquery("tablet_and_smaller") {
+          width: auto;
+        }
+        .cw-image {
+          width: $gutterWidth*4.4;
+          height: $gutterHeight*4.4;
+          .cw-tag {
+            @include font-size-xs();
+          }
+        }
+        .cw-content {
+          padding-left: $gutterWidth*4.9;
+          padding-right: $gutterWidth*1.5;
+          h2 {
+            @include font-size-s();
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .info {
+            left: $gutterWidth*4.9;
+            right: $gutterWidth*1.5;
+          }
+        }
+        .cw_follow_link {
+          width: $gutterWidth;
+          padding-top: $gutterHeight*4.4;
+          line-height: $gutterHeight*4.4;
+          &:after {
+            width: $gutterWidth;
+            line-height: $gutterHeight*4.4 !important;
+          }
+        }
+      }
+    }
+    &.no_margin{
+      margin:0;
+    }
+  }
+  .cw-all_auctions {
+    @include font-size-s();
+    @include cw_mediaquery("mobile") {
+      display: none;
+    }
+    .cw-list-columns {
+      margin-bottom: $gutterHeight/2;
+    }
+  }
+  #cw-lot_list-intro {
+    display: none;
+    border-bottom: 1px solid $grayLighterer2;
+    margin-bottom: $gutterHeight;
+    padding-bottom: $gutterHeight/2 - 1;
+    &.active {
+      display: block;
+    }
+    &.animated {
+      display: block;
+      border: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.2s ease-in-out;
+      &.active {
+        max-height: 8em;
+        border-bottom: 1px solid $grayLighterer2;
+        margin-bottom: $gutterHeight;
+        padding-bottom: $gutterHeight/2 - 1;
+      }
+    }
+    h2 {
+      margin-bottom: $gutterHeight/2;
+      .cw-divider {
+        display: none;
+      }
+    }
+    .cw-lot_list-intro {
+      display: none;
+      margin-bottom: $gutterHeight/2;
+      p {
+        margin: 0;
+      }
+    }
+    .cw-favorites-intro,
+    .cw-search-intro {
+      display: none;
+    }
+  }
+  .show_closed_lots {
+    display: none;
+    border-bottom: 1px solid $grayLighterer2;
+    margin-bottom: $gutterHeight;
+    color: $grayLight;
+    @include font-size-s();
+    p {
+      margin: 0;
+      padding-bottom: ($gutterHeight / 2 - 1);
+    }
+    input#show_closed_lots {
+      vertical-align: baseline;
+    }
+  }
+}
+.cw-auction-status {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  min-height: $gutterHeight*1.65;
+  margin: 0 0 -1px 0;
+  box-shadow: inset 0 1px 0 $grayLighterer2;
+  html.lt-ie9 & {
+    border-top: 1px solid $grayLighterer2;
+  }
+  .cw-auction-status-message {
+    display: inline-block;
+    padding-top: ($gutterHeight * 0.3);
+    padding-bottom: ($gutterHeight * 0.35);
+    color: $blue;
+    @include font-size-l();
+    @include font-weight-medium;
+    @include cw_mediaquery("mobile") {
+      padding-bottom: ($gutterHeight * 0.15);
+      @include font-size-normal();
+    }
+    &:before {
+      display: inline-block;
+      @include cw_icon_fontfamily();
+      content: "\e038\00A0"; // hour glass
+      font-size: 0.8888889em; // 16px
+      line-height: 1.0; // 16px
+      vertical-align: text-top;
+      margin-top: 3px;
+    }
+    &.cw-auction-status-message-opens_soon {
+      display: none;
+      .cw-auction-status-opens_soon & {
+        display: inline-block;
+      }
+    }
+    &.cw-auction-status-message-open_now {
+      display: none;
+      .cw-auction-status-open_now & {
+        display: inline-block;
+      }
+      &:before {
+        content: "\e02f\00A0"; // clock
+      }
+    }
+    &.cw-auction-status-message-open {
+      display: inline-block;
+      .cw-auction-status-closed & {
+        display: none;
+      }
+    }
+    &.cw-auction-status-message-closing_now {
+      color: $orange;
+      display: none;
+      .cw-auction-status-closing_now & {
+        display: inline-block;
+      }
+      &:before {
+        content: "\e02f\00A0"; // clock
+      }
+    }
+    &.cw-auction-status-message-closed {
+      display: none;
+      color: $grayLighter;
+      .cw-auction-status-closed & {
+        display: inline-block;
+      }
+      &:before {
+        content: "\e065\00A0"; // lock
+        line-height: 1.125; // 18px
+      }
+    }
+    .cw-auction-status-closes_today & {
+      color: $orange;
+      &:before {
+        content: "\e02f\00A0"; // clock
+      }
+    }
+  }
+  a {
+    color: $blue;
+    text-decoration: underline;
+  }
+}
+.cw-list-view_options {
+  float: right;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  clear: both;
+  color: $black;
+  html.lt-ie9 & {
+    margin: -1px 0 0 0;
+  }
+  @include font-size-normal();
+  @include font-weight-light;
+  @include cw_mediaquery("mobile") {
+    float: none;
+  }
+  .cw-list-view_options-item {
+    position: relative;
+    float: left;
+    margin: $gutterHeight*0.4 0 0 $gutterWidth*0.5;
+    vertical-align: middle;
+    @include cw_mediaquery("mobile") {
+      float: none;
+      display: block;
+      margin: 0;
+    }
+    &.cw-list-view_options-sort {
+      border-right: 1px solid $grayLighterer2;
+      padding-right: $gutterWidth/2;
+      @include font-size-s();
+      line-height: $gutterHeight;
+    }
+    &.show_only_favorites {
+      overflow: hidden;
+      border-right: 1px solid $grayLighterer2;
+      padding-right: $gutterWidth/2;
+      @include font-size-s();
+      line-height: $gutterHeight;
+      @include cw_mediaquery("mobile") {
+        border-right: none;
+        padding: 0;
+      }
+      #cw-filter-show_only_favorites {
+        position: absolute;
+        bottom: 200%;
+      }
+      label {
+        display: none;
+        cursor: pointer;
+        color: $grayLight;
+        text-decoration: none;
+        &.active {
+          display: inline;
+        }
+        &.cw-filter-all {
+          span {
+            color: $grayLighter;
+          }
+        }
+        &:active {
+          span {
+            color: $grayLight;
+          }
+        }
+        &.cw-filter-only_favorites,
+        &.cw-filter-only_favorites span {
+          color: $blue;
+        }
+        &:hover,
+        &:focus {
+          text-decoration: none;
+        }
+        span {
+          margin-right: 0.25em;
+          @include cw_icon_fontfamily(20px);
+          line-height: 1.0; // 20px
+          vertical-align: top;
+        }
+        .cw-only_favorites-default {
+          display: inline;
+        }
+        @include cw_mediaquery("mobile") {
+          .cw-only_favorites-default {
+            display: none;
+          }
+          .cw-only_favorites-mobile {
+            display: inline;
+          }
+        }
+      }
+      .cw-favorites &,
+      body.cw_not_logged_in & {
+        display: none;
+      }
+    }
+    &.cw-display_mode_switcher {
+      overflow: hidden;
+      margin-top: $gutterHeight*0.35;
+      .cw-display_mode_switcher-button {
+        float: left;
+        width: 1em;
+        height: 1em;
+        overflow: hidden;
+        margin: 0 2px 0 0;
+        cursor: pointer;
+        @include cw_icon_fontfamily(1.5em);
+        line-height: 1.0; // 24px
+        color: $grayLighter;
+        &.cw-display_gallery_mode {
+          margin-right: 0;
+        }
+        &:active {
+          color: $grayLight;
+        }
+        &.active {
+          color: $blue;
+        }
+      }
+    }
+    &.cw-list-view_options-filter {
+      margin-top: 0;
+      @include cw_mediaquery("mobile") {
+        clear: both;
+        margin-top: $gutterHeight/4;
+      }
+      &:after {
+        position: absolute;
+        left: $gutterWidth/2 - 1;
+        top: $gutterHeight*0.35;
+        @include cw_icon_font("\e016");
+        font-size: 1.25em;
+        line-height: 1.0;
+        color: $grayLighter;
+      }
+      .cw-form-text {
+        width: $gridColumnWidth*3 - $gutterWidth;
+        height: $gutterHeight*1.75;
+        padding-left: 2em;
+        background-color: $grayLighterer;
+        border-color: $grayLighterer2;
+        &:focus {
+          border-color: $blue;
+        }
+        &::-webkit-search-cancel-button {
+          -webkit-appearance: none !important;
+          &:after {
+            content: "";
+            display: block;
+            width: 10px;
+            height: 10px;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAn0lEQVR42u3UMQrDMBBEUZ9WfQqDmm22EaTyjRMHAlM5K+Y7lb0wnUZPIKHlnutOa+25Z4D++MRBX98MD1V/trSppLKHqj9TTBWKcoUqffbUcbBBEhTjBOV4ja4l4OIAZThEOV6jHO8ARXD+gPPvKMABinGOrnu6gTNUawrcQKNCAQ7QeTxORzle3+sDfjJpPCqhJh7GixZq4rHcc9l5A9qZ+WeBhgEuAAAAAElFTkSuQmCC);
+            background-repeat: no-repeat;
+            background-size: 10px;
+            background-position: left top;
+            html.browser-ios & { // search-cancel-button still buggy on iOS :(
+              display: none;
+            }
+          }
+        }
+        body.cw_lang_fr & {
+          @include cw_placeholder() {
+            @include font-size-s();
+            padding-top: 1px;
+          }
+        }
+        body.cw_lang_du .cw-favorites & {
+          @include cw_placeholder() {
+            @include font-size-xs();
+            padding-top: 3px;
+          }
+        }
+        @include cw_mediaquery("tablet_only") {
+          width: $gridColumnWidth*2;
+          @include cw_placeholder() {
+            @include font-size-xs();
+            padding-top: 0.25em;
+            body.cw_lang_fr & {
+              font-size: 9px;
+              font-size: 0.5625rem;
+              padding-top: 0.556em;
+            }
+          }
+        }
+        @include cw_mediaquery("mobile") {
+          width: 100%;
+          @include cw_placeholder() {
+            text-align: center;
+          }
+        }
+      }
+    }
+    p {
+      margin: 0;
+      color: $grayLight;
+    }
+    @include cw_mediaquery("mobile") {
+      &.cw-display_mode_switcher {
+        display: none; // hide for now (solve lazyloading scaled images)
+      }
+    }
+  }
+  label {
+    display: inline-block;
+  }
+  a {
+    cursor: pointer;
+    color: $grayLight;
+    &.active {
+      color: $blue;
+    }
+  }
+}
+p.cw-load_more {
+  // Mobile pagination button
+  display: none;
+  @include cw_mediaquery("mobile") {
+    &.active {
+      display: block;
+    }
+    a {
+      padding-top: $gutterHeight/2;
+      padding-bottom: $gutterHeight/2;
+      &:active,
+      &.active {
+        opacity: 0.33;
+      }
+      &.active {
+        pointer-events: none;
+      }
+    }
+  }
+}
+.cw-list-table_list {
+  clear: both;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style-type: none;
+  // @include cw_mediaquery("mobile") {
+  //   html.mod-touch & {
+  //     -webkit-transform: translate3d(0,0,0);
+  //   }
+  // }
+  // bad browsers...
+  .closing_time {
+    display: none;
+  }
+  .ie8_prolonged {
+    display: none;
+    color: $blue;
+    @include font-weight-medium;
+  }
+  &.later_hide_js {
+    visibility: hidden;
+    @include cw_mediaquery("mobile") {
+      visibility: visible;
+    }
+  }
+  &:before {
+    content: "";
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: $z_default + 3;
+    background-color: rgba(255,255,255,0.67);
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+    -ms-transition: none; // transition in IE breaks fade effect?
+  }
+  &:after {
+    $throbber_size: 80px;
+    content: "";
+    position: absolute;
+    z-index: $z_default + 3;
+    left: 50%;
+    top: $gutterHeight*3;
+    width: $throbber_size;
+    height: $throbber_size;
+    margin-left: $throbber_size/-2 - 10;
+    background: transparent url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj4KPHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCAzOCAzOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBzdHJva2U9IiMwMGFlZWYiPgogIDxnIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxIDEpIiBzdHJva2Utd2lkdGg9IjIiPgogICAgICA8Y2lyY2xlIHN0cm9rZS1vcGFjaXR5PSIuMiIgY3g9IjE4IiBjeT0iMTgiIHI9IjE4Ii8+CiAgICAgIDxwYXRoIGQ9Ik0zNiAxOGMwLTkuOTQtOC4wNi0xOC0xOC0xOCIvPgogICAgPC9nPgogIDwvZz4KPC9zdmc+') left top no-repeat;
+    visibility: hidden;
+  }
+  @-webkit-keyframes loader {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes loader {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  &.cw-disabled { // applied during search & mode switch
+    pointer-events: none;
+    &:before {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+  &.cw-throbber {
+    &:after {
+      -webkit-animation: loader 1s infinite linear;
+      -ms-animation: loader 1s infinite linear;
+      animation: loader 1s infinite linear;
+      visibility: visible;
+    }
+  }
+  &.normal { // also .compact (when we will use it...)
+    .cw-item-auctionlot {
+      $imageWidth: $gridColumnWidth*3 - $gutterWidth;
+      $imageHeight: floor($imageWidth*0.75);
+      $imageWidth_t: $gridColumnWidth*2 - $gutterWidth;
+      $imageHeight_t: floor($imageWidth_t*0.75);
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 0 0 $gutterHeight 0;
+      margin-bottom: $gutterHeight;
+      border-bottom: 1px solid $grayLighterer2;
+      article {
+        position: relative;
+        overflow: hidden;
+        .cw-lot_content {
+          padding-left: ($gridColumnWidth / 2);
+          .cw-lot_order {
+            display: block;
+            float: left;
+            margin-left: ($gridColumnWidth / -2);
+          }
+          @include cw_mediaquery("mobile") {
+            min-height: $imageHeight_t;
+            padding-left: ($imageWidth_t - $gutterWidth / 2);
+            header {
+              margin-bottom: 0;
+            }
+            .cw-lot_order {
+              display: inline;
+              float: none;
+              margin-left: 0;
+              @include font-weight-medium;
+            }
+          }
+          p {
+            a {
+              white-space: nowrap;
+            }
+          }
+        }
+        .cw-info {
+          padding-bottom: $gutterHeight/2;
+          @include cw_mediaquery("mobile") {
+            margin-bottom: 0;
+          }
+          header {
+            margin-bottom: ($gutterHeight / 2);
+            h2 {
+              @include font-size-l;
+              margin: 0;
+              @include cw_mediaquery("mobile") {
+                @include font-size-normal;
+                @include font-weight-light;
+              }
+              a {
+                &:hover,
+                &:focus {
+                  text-decoration: underline;
+                }
+              }
+            }
+            p.cw-lot-estimation {
+              margin: ($gutterHeight / 4) 0 0 0;
+              padding: 0 0 0 $gutterWidth;
+              background: url("/images/v3/icons/estimation-auctioneer@2x.png") 0 ($gutterHeight * 0.1) no-repeat;
+              background-size: 12px 12px;
+              color: $gray;
+              @include font-size-s();
+              html.lt-ie9 & {
+                background-image: url("/images/v3/icons/estimation-auctioneer.png");
+              }
+              @include cw_mediaquery("tablet_and_smaller") {
+                span {
+                  display: block;
+                }
+              }
+              @include cw_mediaquery("mobile") {
+                display: none;
+              }
+            }
+          }
+          p {
+            margin-bottom: 0;
+            @include cw_mediaquery("mobile") {
+              display: none;
+            }
+            a {
+              @include font-weight-medium;
+              &:after {
+                @include cw_icon_font("\E0BE");
+              }
+              &:hover,
+              &:focus {
+                text-decoration: none;
+                border-bottom: 1px solid $blue;
+              }
+            }
+          }
+        }
+        .cw-image {
+          overflow: hidden;
+          margin-bottom: ($gutterHeight * -2.5);
+          @include cw_mediaquery("tablet_and_smaller") {
+            margin-bottom: ($gutterHeight / 2);
+          }
+          @include cw_mediaquery("mobile") {
+            float: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: $imageWidth_t !important;
+          }
+          a {
+            display: block;
+            height: $imageHeight;
+            line-height: ($imageHeight - 2);
+            text-align: center;
+            background-color: $grayLighterer;
+            img, svg {
+              display: inline;
+              max-width: 100%;
+              max-height: 100%;
+              width: auto;
+              height: auto;
+              vertical-align: middle;
+            }
+            @include cw_mediaquery("tablet_and_smaller") {
+              height: $imageHeight_t;
+              line-height: $imageHeight_t - 3;
+            }
+          }
+        }
+        footer {
+          clear: both;
+          overflow: hidden;
+          margin: 0 ($gridColumnWidth*3 + $gutterWidth/2) 0 $gutterWidth/2;
+          padding: $gutterHeight/2 $gutterWidth/2;
+          background-color: $blueLight;
+          transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+          @include cw_mediaquery("tablet_and_smaller") {
+            margin-right: $gutterWidth/2;
+          }
+          .counter_container {
+            position: absolute;
+            min-height: $gutterHeight*1.5;
+            margin: $gutterHeight/-2 0 $gutterHeight/-2 $gutterWidth/-2;
+            padding: $gutterHeight/2 $gutterWidth/4 $gutterHeight/2 $gutterWidth/2;
+            line-height: $gutterHeight*1.5;
+            background-color: $blueMid;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            body .cw-auction-status-not_opened &,
+            body.cw_lang_du.cw_not_logged_in .cw-auction-status-open_now & { // German "Endet in 10 Tage 15 h 10 min 52 s" is long!
+              @include font-size-s();
+              line-height: $gutterHeight*1.5;
+            }
+            &:after {
+              content: "";
+              position: absolute;
+              right: $gutterWidth/-2;
+              top: 0;
+              width: 0;
+              height: 0;
+              border-left: $gutterWidth/2 solid $blueMid;
+              border-top: $gutterHeight*1.25 solid transparent;
+              border-bottom: $gutterHeight*1.25 solid transparent;
+              transition: border-color 0.2s ease-in-out;
+            }
+            .prolonged {
+              @include font-weight-medium;
+              color: $blue;
+            }
+            .closing_time.countdown {
+              display: none;
+            }
+          }
+          .current_bid_state {
+            float: right;
+            margin-right: $gutterWidth/2;
+            @include font-size-l();
+            @include font-weight-medium;
+            line-height: $gutterHeight*1.5;
+          }
+          .cw_lot_button {
+            float: right;
+          }
+          @include cw_mediaquery("mobile") {
+            position: relative;
+            .counter_container {
+              margin: 0;
+              padding: 0;
+              line-height: inherit !important;
+              background-color: transparent !important;
+              color: $black !important;
+              @include font-size-s();
+              .prolonged {
+                color: $black !important;
+              }
+              &:after {
+                display: none;
+              }
+            }
+            .current_bid_state {
+              float: none;
+              margin-right: 0;
+              line-height: inherit;
+            }
+            .cw_lot_button {
+              a {
+                padding: $gutterHeight/2 $gutterWidth/2;
+              }
+            }
+          }
+        }
+      }
+      &.lot_state_closed {
+        article {
+          footer {
+            background-color: $grayLighterer;
+            .counter_container {
+              background-color: $grayLighterer3;
+              &:after {
+                border-left-color: $grayLighterer3;
+              }
+              .counter {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+      .cw-auction-status-closes_today &.lot_state_lastminute,
+      .cw-auction-status-closing_now &.lot_state_lastminute {
+        article {
+          footer {
+            background-color: $orangeLighter;
+            .counter_container {
+              background-color: $orange;
+              color: $white;
+              &:after {
+                border-left-color: $orange;
+              }
+              .prolonged {
+                color: $white;
+              }
+            }
+          }
+        }
+      }
+      .cw-auction &.lot_bid_state_got_highest {
+        article {
+          footer {
+            background-color: $greenLighter;
+            .counter_container {
+              background-color: $green;
+              color: $white;
+              &:after {
+                border-left-color: $green;
+              }
+              .prolonged {
+                color: $white;
+              }
+            }
+          }
+        }
+      }
+      .cw-auction &.lot_bid_state_got_overbid,
+      .cw-auction &.lot_bid_state_reserve_price_not_met.lot_bid_state_got_highest {
+        article {
+          footer {
+            background-color: $redLight;
+            .counter_container {
+              background-color: $red;
+              color: $white;
+              &:after {
+                border-left-color: $red;
+              }
+              .prolonged {
+                color: $white;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &.gallery {
+    margin-right: $gutterWidth*-1;
+    @include cw_mediaquery("mobile") {
+      margin-left: $gutterWidth/-2;
+      margin-right: $gutterWidth/-2;
+    }
+    .cw-item-auctionlot {
+      float: left;
+      width: $gridColumnWidth*3 - $gutterWidth;
+      margin: 0 $gutterWidth $gutterHeight 0;
+      article {
+        margin-left: 0;
+        margin-right: 0;
+        .cw-grid-unit {
+          float: none;
+          left: 0;
+          width: auto;
+          margin-left: 0;
+        }
+        .cw-info {
+          position: absolute;
+          z-index: ($z_default + 1);
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          @include cw_mediaquery("mobile") {
+            left: 0;
+            right: 0;
+          }
+          .cw-lot_content {
+            h2 {
+              @include font-size-normal();
+              @include cw_mediaquery("mobile") {
+                @include font-size-s();
+              }
+              a {
+                display: block;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                padding: ($gutterHeight / 2) ($gutterWidth * 3.5) ($gutterHeight / 2) ($gutterWidth / 2);
+                background-color: rgba(255,255,255,0); // needed for IE10 :s
+                color: transparent;
+                transition: color 0.2s ease-in-out;
+                &:hover,
+                &:focus {
+                  text-decoration: none;
+                  color: $white;
+                }
+                .cw-lot_order {
+                  display: inline;
+                  float: none;
+                  margin-left: 0;
+                }
+                .cw-lot_title {
+                  @include font-weight-light;
+                }
+              }
+            }
+            p.cw-lot-estimation {
+              display: none;
+            }
+          }
+        }
+        .cw-image {
+          margin-bottom: 0;
+          @include cw_rounded_corners_top;
+          .cw-content {
+            padding: 0;
+            img,
+            svg {
+              display: block;
+              margin-bottom: 0;
+              @include cw_rounded_corners_top;
+            }
+          }
+          a {
+            display: block;
+            background-color: $black;
+            img,
+            svg {
+              transition: opacity 0.2s linear;
+            }
+          }
+          @include cw_mediaquery("mobile") {
+            margin-right: 0;
+          }
+        }
+        p {
+          display: none;
+        }
+        footer {
+          padding: $gutterHeight*0.75 $gutterWidth/2;
+          background-color: $grayLighterer;
+          transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+          @include cw_rounded_corners_bottom;
+          @include cw_mediaquery("mobile") {
+            margin: 0;
+            .counter_container {
+              @include font-size-s();
+            }
+          }
+          .counter_container {
+          }
+          .current_bid_state {
+            @include font-size-l();
+            @include font-weight-medium;
+            .counter {
+              @include font-weight-light;
+            }
+          }
+          .cw_lot_button {
+            display: none;
+          }
+        }
+      }
+      article:hover {
+        .cw-image img,
+        .cw-image svg {
+          opacity: 0.67;
+          html.lt-ie9 & {
+            filter: alpha(opacity=67);
+          }
+        }
+        .freeshipping {
+          .triangle {
+            border-top-color: $grayMid;
+          }
+          .text {
+          }
+        }
+        .cw-info .cw-lot_content h2 a {
+          color: $white;
+        }
+      }
+      @include cw_mediaquery("mobile") {
+        width: 45.3125%;
+        margin: 0 0 0 3.125%;
+        padding-top: $gutterHeight/2;
+        article {
+          .cw-content {
+            padding: 0;
+          }
+          .cw-image {
+            width: auto !important;
+          }
+        }
+      }
+      &.lot_state_closed {
+        article {
+          footer {
+          }
+        }
+      }
+      .cw-auction-status-closes_today &.lot_state_lastminute,
+      .cw-auction-status-closing_now &.lot_state_lastminute {
+        article {
+          footer {
+            background-color: $orange;
+            color: $white;
+            .counter_container {
+              .prolonged {
+                color: $white;
+              }
+            }
+          }
+        }
+      }
+      &.lot_bid_state_got_highest {
+        article {
+          footer {
+            background-color: $greenLighter;
+            color: $green;
+            .counter_container {
+              .prolonged {
+                color: $green;
+              }
+            }
+          }
+        }
+        &.lot_state_lastminute,
+        &.lot_state_closed {
+          article {
+            footer {
+              background-color: $green;
+              color: $white;
+              .counter_container {
+                .prolonged {
+                  color: $white;
+                }
+              }
+            }
+          }
+        }
+      }
+      &.lot_bid_state_got_overbid,
+      &.lot_bid_state_reserve_price_not_met.lot_bid_state_got_highest {
+        article {
+          footer {
+            background-color: $redLight;
+            color: $red;
+            .counter_container {
+              .prolonged {
+                color: $red;
+              }
+            }
+          }
+        }
+        &.lot_state_lastminute,
+        &.lot_state_closed {
+          article {
+            footer {
+              background-color: $red;
+              color: $white;
+              .counter_container {
+                .prolonged {
+                  color: $white;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    &.gallery_fixed {
+      .cw-item-auctionlot {
+        $item_height: round(($gridColumnWidth * 3 - $gutterWidth) * 0.75);
+        article {
+          .cw-image {
+            -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+            .cw-content {
+              background-color: $black;
+              a {
+                height: $item_height;
+                text-align: center;
+                background-color: $grayLighterer3;
+                line-height: ($item_height - 4);
+                transition: background-color 0.2s linear, opacity 0.2s linear;
+                img {
+                  display: inline;
+                  max-height: 100%;
+                  width: auto;
+                  border-radius: 0;
+                  vertical-align: middle;
+                }
+              }
+            }
+          }
+          &:hover {
+            .cw-image {
+              .cw-content {
+                a {
+                  opacity: 0.67;
+                  html.lt-ie9 & {
+                    filter: alpha(opacity=67);
+                  }
+                  img {
+                    opacity: 1;
+                    html.lt-ie9 & {
+                      filter: alpha(opacity=100);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &.compact {
+    .cw-item-auctionlot {
+      article {
+        .cw-lot_content {
+          header {
+            margin-bottom: 0;
+          }
+          .cw-lot-estimation,
+          .cw-lot-subtitle {
+            display: none;
+          }
+        }
+        .cw-info {
+          float: none;
+          left: 0;
+          width: auto;
+          margin-left: 0;
+          padding-right: 0;
+        }
+        .cw-image {
+          display: none;
+        }
+        footer {
+          margin-right: $gutterWidth/2;
+        }
+      }
+    }
+  }
+  img.hide {
+    display: none !important;
+  }
+  &.cw-auction-alt_photo { // ABtest where last alternative photo is used
+    .cw-image {
+      img.show {
+        display: none !important;
+      }
+    }
+    &.normal {
+      .cw-image {
+        img.hide {
+          display: inline !important;
+        }
+      }
+    }
+    &.gallery {
+      .cw-image {
+        img.hide {
+          display: block !important;
+        }
+      }
+    }
+  }
+}
+#lot_list_filters {
+  .cw-filter-group {
+    li {
+      &.cw-filter-zero {
+        opacity: 0.33;
+        label {
+          pointer-events: none;
+          cursor: default;
+        }
+      }
+    }
+  }
+}
+
+
+
+// lot detail
+.cw-lot {
+  &.cw-lot-preview {
+    pointer-events: none;
+    .cw-lot-images,
+    .cw-tabs,
+    #cw-lot-catalog_items {
+      pointer-events: auto;
+    }
+  }
+  .cw-lot_header {
+    overflow: hidden;
+    margin-bottom: $gutterHeight;
+    padding: $gutterHeight*0.5 0 $gutterHeight*0.4 0;
+    border-top: 1px solid $grayLighterer2;
+    border-bottom: 1px solid $grayLighterer2;
+    @include font-size-xs();
+    color: $grayMid;
+    a {
+      color: $grayMid;
+      text-transform: uppercase;
+    }
+    .cw-auction-breadcrumbs {
+      @include cw_mediaquery("mobile") {
+        margin-bottom: $gutterHeight/4;
+      }
+    }
+    .cw-auction-navigator {
+      @include cw_mediaquery("mobile") {
+        margin-bottom: 0;
+      }
+      .cw-content {
+        @include flexbox_justify;
+      }
+      .cw-auction-navigator-mid {
+        position: relative;
+        margin: 0 1em;
+        strong {
+          &:after {
+            position: absolute;
+            @include cw_icon_font("\e0bc");
+          }
+        }
+        select {
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 100%;
+          opacity: 0;
+          cursor: pointer;
+          @include font-size-normal();
+          html.lt-ie9 & {
+            filter: alpha(opacity=0);
+          }
+        }
+      }
+      .cw-disabled {
+        color: $grayLighterer2;
+        text-transform: uppercase;
+      }
+    }
+  }
+  .cw-content > header.cw-page_title {
+    h1 {
+      margin-bottom: $gutterHeight;
+    }
+    p {
+      @include font-weight-medium;
+      margin: 0 0 $gutterHeight 0;
+    }
+  }
+  .cw-lot_detail {
+    @include cw_mediaquery("tablet_and_smaller") {
+      aside {
+        text-align: center;
+        .cw-lot-auctioneer {
+          h2 {
+            display: none;
+          }
+        }
+        .cw-info_auctioneer {
+          display: inline-block;
+          text-align: left;
+          margin-left: ($gutterWidth / 2);
+          margin-right: ($gutterWidth / 2);
+          margin-bottom: 0;
+        }
+        .cw-sharing {
+          .cw-sharing-item {
+            float: none;
+            display: inline-block;
+            margin: 0 $gutterWidth/4;
+            vertical-align: top;
+          }
+        }
+      }
+    }
+  }
+  .cw-lot_content {
+    padding-bottom: ($gutterHeight * 2);
+    @include cw_mediaquery("mobile") {
+      padding-bottom: 0;
+    }
+  }
+  .cw-tabs-content {
+    a {
+      color: $black;
+      text-decoration: underline;
+      &.no_underline {
+        text-decoration: none;
+      }
+    }
+    h2 {
+      @include font-size-normal();
+      @include font-weight-medium;
+      margin-bottom: 0.625em;
+    }
+    .shipping-price {
+      color: $blue;
+      text-decoration: none;
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+  .cw-lot-shipping {
+    a {
+      color: $black;
+      text-decoration: underline;
+    }
+  }
+  .cw-auction_help {
+    @include cw_mediaquery("mobile") {
+      border-top: 1px solid $grayLighterer2;
+      padding-top: ($gutterHeight * 2);
+    }
+  }
+  .cw-payment_options {
+    ul {
+      padding: 0;
+      margin: ($gutterHeight / 2) 0 ($gutterHeight / -2) 0;
+      list-style-type: none;
+      overflow: hidden;
+      @include cw_mediaquery("mobile") {
+        margin-right: 0;
+      }
+      li {
+        float: left;
+        width: 55px;
+        overflow: hidden;
+        border: 1px solid $grayLighterer3;
+        margin: 0 $gutterWidth/2 $gutterHeight/2 0;
+        background-color: $white;
+        border-radius: 3px;
+      }
+    }
+  }
+  #cw-lot_offered_by {
+    .score {
+      &:after {
+        @include cw_icon_font("\00a0\e00f");
+      }
+    }
+  }
+  #cw-lot-description {
+    .lot_subtitle {
+      @include font-size-l();
+      margin-bottom: $gutterHeight;
+    }
+    .cw-lot-description {
+      overflow: hidden;
+    }
+  }
+  #cw-lot-shipping {
+    .cw-columns {
+      margin-bottom: 0;
+    }
+    table {
+      // margin-bottom: 0;
+      th {
+        // min-width: $gridColumnWidth*2 - $gutterWidth*2;
+      }
+    }
+  }
+  .cw-lot_sidebar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: $gridColumnWidth*3;
+    @include cw_mediaquery("mobile") {
+      position: relative;
+      width: auto;
+      margin: $gutterHeight*2 $gutterWidth $gutterHeight $gutterWidth;
+    }
+    .cw-modal {
+      z-index: $z_modal;
+    }
+  }
+  .cw-lot-images {
+    $image_height: 319px; // 3:2 (478:319)
+    $image_height_mob: 225px;
+    $thumb_size: $gutterWidth*2.5;
+    position: relative;
+    outline: none;
+    height: $image_height + $thumb_size + $gutterHeight;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    @include cw_mediaquery("mobile") {
+      height: $image_height_mob + $thumb_size + $gutterHeight;
+    }
+    .cw-image-big {
+      position: relative;
+      overflow: hidden;
+      .cw-image-big-blur { // Ambilight :)
+        position: absolute;
+        left: ($gutterWidth * -1);
+        right: ($gutterWidth * -1);
+        top: ($gutterWidth * -1);
+        bottom: ($gutterWidth * -1);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        transition: background-image 0.2s linear;
+        -webkit-filter: blur(($gutterWidth * 0.75));
+        filter: blur(($gutterWidth * 0.75));
+        opacity: 0.25;
+      }
+      a.cw-image-big-link {
+        position: relative;
+        display: block;
+        outline: none;
+        height: $image_height;
+        line-height: $image_height - 2;
+        overflow: hidden;
+        text-align: center;
+        cursor: zoom-in;
+        @include cw_mediaquery("mobile") {
+          height: $image_height_mob;
+          line-height: $image_height_mob - 2;
+        }
+        img {
+          display: inline;
+          max-width: 100%;
+          max-height: 100%;
+          width: auto;
+          height: auto;
+          vertical-align: middle;
+        }
+      }
+      a.cw-lot-images-nav {
+        display: block;
+        position: absolute;
+        top: 41.67%;
+        bottom: 41.67%;
+        width: $gutterWidth*1.25;
+        overflow: hidden;
+        background-color: rgba(255,255,255,0.75);
+        color: $blue;
+        @include cw_icon_fontfamily($gutterWidth*1.125);
+        line-height: $image_height/6;
+        text-align: center;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        transition: background-color 0.1s ease-in-out;
+        @include cw_mediaquery("mobile") {
+          line-height: $image_height_mob/6;
+        }
+        html.lt-ie9 & {
+          background-color: $white;
+        }
+        &:hover,
+        &:focus {
+          background-color: rgba(255,255,255,0.875);
+          text-decoration: none;
+        }
+        &.cw-lot-images-nav-previous {
+          left: 0;
+        }
+        &.cw-lot-images-nav-next {
+          right: 0;
+        }
+      }
+    }
+    .cw-lot-images-thumbs {
+      position: relative;
+      overflow: auto;
+      padding: $gutterHeight/2 $gutterWidth*1.7;
+      white-space: nowrap;
+      text-align: center;
+      -webkit-overflow-scrolling: touch;
+      html.lt-ie10 & {
+        overflow-x: scroll;
+        overflow-y: hidden;
+      }
+      .cw-lot-images-thumb {
+        display: inline-block;
+        margin: 0 $gutterWidth/2 0 0;
+        vertical-align: top;
+        &.cw-lot-images-thumb-last {
+          margin-right: 0;
+        }
+        a {
+          position: relative;
+          display: block;
+          width: $thumb_size;
+          height: $thumb_size;
+          overflow: hidden;
+          text-align: center;
+          line-height: $thumb_size - 2;
+          img {
+            transform: translate3d(0,0,0); // prevent wiggle in Chrome
+            display: inline;
+            max-width: $thumb_size;
+            max-height: $thumb_size;
+            width: auto;
+            height: auto;
+            vertical-align: middle;
+            transition: opacity 0.1s ease-in-out;
+          }
+          &:hover,
+          &:focus {
+            outline: none;
+            &:hover img {
+              opacity: 0.9;
+            }
+          }
+          &.active {
+            &:after {
+              content: "";
+              position: absolute;
+              left: 0;
+              right: 0;
+              top: 0;
+              bottom: 0;
+              border: 3px solid $blue;
+            }
+          }
+        }
+      }
+    }
+    .cw-lot-images-thumbsnav {
+      a {
+        display: block;
+        position: absolute;
+        top: $image_height + $gutterHeight/2;
+        width: $gutterWidth*1.25;
+        height: $thumb_size;
+        overflow: hidden;
+        background-color: rgba(255,255,255,0.9);
+        color: $blue;
+        @include cw_icon_fontfamily(0.75em);
+        line-height: $thumb_size;
+        text-align: center;
+        outline: none;
+        cursor: pointer;
+        transition: background-color 0.1s ease-in-out;
+        html.lt-ie9 & {
+          background-color: $white;
+        }
+        &:hover,
+        &:focus {
+          text-decoration: none;
+          &:hover {
+            background-color: rgba(255,255,255,0.95);
+          }
+        }
+        @include cw_mediaquery("mobile") {
+          top: $image_height_mob + $gutterHeight/2;
+        }
+      }
+      .cw-lot-images-thumbsnav-previous {
+        left: 0;
+      }
+      .cw-lot-images-thumbsnav-next {
+        right: 0;
+      }
+    }
+  }
+  #lot_app_signup {
+    background-color: $grayLighterer3;
+  }
+  #lot_related_items {
+    .cw-tiles {
+      margin-bottom: $gutterHeight*-2;
+    }
+    .cw-big {
+      z-index: 0;
+    }
+  }
+  .bid_block {
+    position: relative;
+    z-index: $z_default + 1;
+    // border-bottom: 5px solid $blue;
+    &.cw-sticky-on {
+      top: $headerHeight_sticky;
+      width: $gridColumnWidth*3 - $gutterWidth;
+      @include cw_mediaquery("mobile") {
+        top: auto;
+        width: auto;
+      }
+    }
+    @include cw_mediaquery("mobile") {
+      position: static !important;
+      left: auto;
+      right: auto;
+      margin-top: none !important;
+      margin-bottom: $gutterHeight*2;
+      -webkit-transform: none !important;
+      transform: none !important;
+      #counter {
+        position: static;
+        overflow: visible;
+      }
+    }
+    .cw-bid_info {
+      @include font-size-xs();
+      .cw-bid_info-current_bid {
+        @include font-size-normal();
+        strong {
+          white-space: nowrap;
+          @include font-size-xl();
+        }
+        &.amount_with_localization {
+          margin-bottom: ($gutterHeight / 2) !important;
+          strong,
+          .localized_amount {
+            @include font-size-l();
+          }
+        }
+      }
+      .cw-bid_info-next_minimal_bid {
+        &.amount_with_localization {
+          @include font-size-s();
+        }
+      }
+      .localized_amount {
+        display: none;
+      }
+      .amount_with_localization {
+        overflow: hidden;
+        text-align: left;
+        .cw-bid_info-label {
+          display: block;
+          @include font-size-xs();
+        }
+        strong,
+        .amount {
+          display: block;
+          float: left;
+          white-space: nowrap;
+          @include font-weight-medium;
+        }
+        .localized_amount {
+          display: block;
+          float: right;
+          white-space: nowrap;
+        }
+      }
+      .amount_with_localization-b {
+        .bid_amount {
+          display: none;
+        }
+        &.cw-bid_info-current_bid {
+          .cw-bid_info-label {
+            @include font-size-xs();
+          }
+          .localized_amount {
+            display: inline;
+            margin-left: 0.25em;
+            color: $black;
+            pointer-events: none;
+            @include font-size-xl();
+            @include font-weight-medium;
+            &:hover,
+            &:focus {
+              text-decoration: none;
+            }
+            .cw_icon_info {
+              display: none;
+            }
+          }
+        }
+        &.cw-bid_info-next_minimal_bid {
+          .localized_amount {
+            display: inline;
+            white-space: nowrap;
+          }
+          .amount {
+            margin-left: 0.5em;
+          }
+        }
+      }
+    }
+    #counter {
+      overflow: visible;
+      padding: $gutterHeight/2 $gutterWidth/2;
+      line-height: 1.4285714;
+      .countdown {
+        @include font-size-l();
+      }
+    }
+    &.cw-bid_trigger:not(.lot_state_closed) {
+      @include cw_mediaquery("mobile") {
+        margin-bottom: 124px;
+        #counter {
+          position: fixed;
+          z-index: ($z_default + 1);
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding-top: ($gutterHeight * 1.25);
+          padding-bottom: ($gutterHeight / 4);
+          box-shadow: 0 -1px 0 $shadow_color;
+          html.menu-below-open & {
+            visibility: hidden;
+          }
+          .cw-bid_trigger-button {
+            display: block !important;
+            float: right;
+            margin-top: ($gutterHeight * -0.75);
+            a.btn {
+              background-color: transparent !important;
+              color: $white !important;
+              box-shadow: inset 0 0 0 1px $white;
+            }
+          }
+          .bid_counter_container {
+            @include font-size-xs();
+            line-height: $gutterHeight;
+            .counter_container {
+              display: inline;
+              div {
+                display: inline;
+              }
+              .countdown {
+                font-size: 1em;
+                strong {
+                  @include font-weight-light;
+                }
+              }
+            }
+          }
+        }
+        .cw-bid_info-current_bid {
+          position: fixed;
+          z-index: ($z_default + 1);
+          bottom: ($gutterHeight * 1 + 1);
+          left: ($gutterWidth / 2);
+          color: $white;
+          html.menu-below-open & {
+            visibility: hidden;
+          }
+          .cw-bid_info-label {
+            @include font-size-xs();
+            @include font-weight-medium;
+          }
+          strong {
+            @include font-size-l();
+          }
+        }
+      }
+    }
+    &.lot_bid_state_got_highest,
+    &.lot_state_closed {
+      .cw-bid_trigger-button {
+        visibility: hidden;
+      }
+    }
+    &.lot_state_none {
+      .bid_messages_holder,
+      #counter .counter_container,
+      .bid_console_container,
+      .cw-bid_history {
+        display: none;
+      }
+    }
+    &.lot_state_closed {
+      .bid_messages_holder,
+      #counter .counter_container {
+          display: none;
+      }
+      .bid_console_container .bid_console {
+        display:none;
+      }
+    }
+    &.lot_state_bidding_started {
+    }
+    &.lot_state_bidding_not_started {
+      .bid_console_container,
+      .cw-bid_history {
+        display: none;
+      }
+    }
+    &.lot_state_lastminute {
+      #counter {
+        background-color: $orange;
+        color: $white;
+      }
+    }
+    &.lot_bid_state_got_highest {
+      #counter {
+        background-color: $green;
+        color: $white;
+      }
+    }
+    &.lot_bid_state_got_overbid,
+    &.lot_bid_state_got_highest.lot_bid_state_reserve_price_not_met {
+      #counter {
+        background-color: $red;
+        color: $white;
+      }
+    }
+    &.lot_bid_state_reserve_price_not_met {
+    }
+    &.lot_state_no_bids {
+      .cw-bid_history {
+      }
+    }
+    &.lot_state_has_bids {
+      .cw-bid_history {
+        .bid_result {
+          display: none;
+        }
+      }
+    }
+    .bid_messages_holder {
+      .bid_message_alert > div,
+      .bid_message_info > div {
+        padding: $gutterHeight*0.45 $gutterWidth/2 $gutterHeight*0.45 $gutterWidth/2;
+      }
+      .bid_message_alert > div {
+        background-color: $orange;
+        color: $white;
+      }
+      .bid_message_info > div {
+        background-color: $green;
+        color: $white;
+      }
+      a {
+        color: $white;
+        text-decoration: underline;
+      }
+    }
+    .additional_auth_message {
+      width: 100%;
+      margin: ($gutterHeight / 2) 0;
+      padding: 0;
+      p {
+        @include font-weight-medium;
+        a {
+          position: relative;
+          display: block;
+          padding-left: $gutterWidth;
+          color: $orange;
+          &:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            content: "\e075\00A0\00A0";
+            @include cw_icon_fontfamily(12px);
+            color: $orange;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+    .bid_vat_message {
+      margin-top: $gutterHeight*0.75;
+      p {
+        position: relative;
+        padding-left: $gutterHeight;
+        a {
+          display: block;
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          text-decoration: none;
+        }
+      }
+    }
+    .lot_bid_link {
+      float: right;
+      .btn {
+        width: $gridColumnWidth;
+        cursor: pointer;
+        // "Encherir Auto" doesn't fit...
+        body.cw_lang_en &.auto_bid_button,
+        body.cw_lang_fr &.auto_bid_button {
+          @include font-size-xs();
+          padding-top: $gutterHeight*0.45;
+          padding-bottom: $gutterHeight*0.4;
+        }
+      }
+    }
+    .control-group {
+      position: relative;
+      overflow: hidden;
+      margin-top: $gutterHeight*0.65;
+      &.disabled {
+        label, .decimals, input, .small{
+          opacity:0.25;
+          cursor:default;
+        }
+      }
+      .label {
+        display: block;
+        @include font-weight-medium;
+        line-height: 1.4285714;
+        color: $blue;
+      }
+      .cw-form-text {
+        float: left;
+        width: $gridColumnWidth - ($gutterWidth / 4);
+        padding-left: ($gutterWidth * 0.8);
+        &::-webkit-input-placeholder { color: $grayLighter; }
+        &::-moz-placeholder { color: $grayLighter; }
+        &:-ms-input-placeholder { color: $grayLighter; }
+      }
+      .decimals {
+        float: left;
+        display: block;
+        margin-left: 0.125em;
+        padding-top: $gutterHeight*0.4;
+        .currency_symbol {
+          position: absolute;
+          left: ($gutterWidth / 4);
+          color: $grayLight;
+        }
+      }
+      .cw-tooltip {
+        left: auto;
+        margin: $gutterHeight*1.5 0 0 ($gridColumnWidth/-2 - $gutterWidth*2);
+      }
+      .small {
+        clear: both;
+        margin-bottom: 0;
+        padding-top: $gutterHeight/4;
+      }
+    }
+    .next_bid {
+      white-space: nowrap;
+    }
+    .cw_inline_modal {
+      margin-top: $gutterHeight*-3.5;
+      &:before {
+        top: $gutterHeight*4.5;
+      }
+    }
+  }
+  .cw-bid_history {
+    margin-top: $gutterHeight/4;
+    overflow: hidden;
+    p {
+      margin: 0;
+    }
+    .bid {
+      overflow: hidden;
+      margin: $gutterHeight/2 0;
+      .bid_alias {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        span {
+          display: block;
+          @include font-size-xs();
+        }
+      }
+      .bid_amount {
+        display: block;
+        float: right;
+        white-space: nowrap;
+      }
+      .bid_time {
+        clear: both;
+        @include font-size-xs();
+      }
+      &.winner strong {
+        color: $blue;
+      }
+    }
+  }
+  #cw-lot-catalog_items {
+    .view_details .cw-gallery {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+
+// general auction elements that can occur anywhere
+.state {
+  display:none;
+  .lot_state_bidding_not_started &.bidding_starts_at,
+  .lot_state_bidding_not_started &.counter_wait_for_opening,
+  .lot_state_bidding_started &.bidding_ends_at,
+  .lot_state_bidding_started &.counter_remaining,
+  .lot_state_closed &.closed,
+  .lot_state_closed &.counter_lot_closed {
+    display: inline;
+  }
+}
+.cw-auction-status-closing_now #lot_list.initial_hide_closed_lots .cw-item-auctionlot.lot_state_closed {
+  display: none;
+}
+
+.cw_lot_button {
+  span{
+    white-space:nowrap;
+
+    &:after{
+      @include cw_icon_font("\E0BE"); // right pointing triangle
+      margin-left: 0.1875em;
+      margin-right: -0.375em; // triangle takes some space on the right
+    }
+  }
+  .join_bidding {
+    display: none;
+  }
+  .view_lot {
+    display: inline;
+  }
+  body.cw_logged_in .lot_state_bidding_started & {
+    .join_bidding {
+      display: inline;
+    }
+    .view_lot {
+      display: none;
+    }
+  }
+}
+.cw-lot .cw-lot-shop {
+  a {
+    color: $black;
+    text-decoration: underline;
+  }
+  strong {
+    display: block;
+    .cw-lot_detail & {
+      @include font-size-normal();
+    }
+  }
+  img {
+    display: inline;
+    vertical-align: baseline;
+    margin-right: 0.25em;
+  }
+  .score {
+    display:inline-block;
+    margin-right: 0.25em;
+    &:before {
+      @include cw_icon_font("\e00f\00a0");
+      @include font-size-l();
+      color: $greenLight;
+    }
+  }
+  .count {
+    a {
+      text-decoration: underline;
+    }
+  }
+  html & table {
+    margin-bottom: $gutterHeight;
+    .score {
+      margin-right: 0;
+    }
+  }
+  ul.cw-feedback {
+    list-style-type: none;
+    padding-left: 0;
+    li {
+      position: relative;
+      padding-left: 1.875em;
+      margin-bottom: ($gutterHeight);
+      .multilingual {
+        @include font-style-italic;
+        .notice {
+          font-style: normal;
+        }
+      }
+      br {
+        display: none;
+      }
+      p {
+        margin: 0;
+        &.cw-feedback-meta {
+          @include font-size-s();
+          color: $grayLight;
+          .cw-feedback-date {
+            &:before {
+              content: "\00a0|\00a0\00a0";
+            }
+          }
+        }
+      }
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: -1px;
+        @include font-size-l();
+      }
+      &.cw-feedback-type_1 { // positive
+        &:before {
+          @include cw_icon_font("\e00f");
+          color: $greenLight;
+        }
+      }
+      &.cw-feedback-type_2 { // neutral
+        &:before {
+          @include cw_icon_font("\e00f\e010");
+          @include font-size-xs();
+          color: $grayLighter;
+          top: 3px;
+        }
+      }
+      &.cw-feedback-type_3 { // negative
+        &:before {
+          @include cw_icon_font("\e010");
+          color: $red;
+          top: 4px;
+        }
+      }
+      .cw-feedback-response {
+        margin-top: ($gutterHeight / 4);
+        padding: ($gutterHeight / 2) ($gutterWidth / 2);
+        @include font-size-s();
+        background-color: $grayLighterer3;
+      }
+      .cw-toggle_link {
+        position: relative;
+        display: block;
+        margin-top: ($gutterHeight / 4);
+        padding-left: 1.25em;
+        @include font-size-s();
+        &:hover,
+        &:focus {
+          color: $black;
+          text-decoration: underline;
+        }
+        &:before {
+          position: absolute;
+          left: 0;
+          top: 0;
+          @include cw_icon_font("\e07f");
+        }
+      }
+    }
+  }
+  a.more {
+    color: $blue;
+    text-decoration: none;
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+.cw-seller_icon {
+  @include font-size-xxs();
+  @include font-weight-medium;
+  text-transform: uppercase;
+  white-space: nowrap;
+  &:before {
+    @include cw_icon_font("\e0bb");
+    @include font-size-s();
+    vertical-align: middle !important;
+    margin-right: -0.1em;
+  }
+  &.cw-seller_icon-pro {
+    color: $blue;
+  }
+  &.cw-seller_icon-top {
+    color: $orange;
+  }
+}
+.cw-lot-sharing {
+  padding-top: $gutterHeight/4;
+  .cw-icon {
+    @include font-size-xl();
+    margin-right: 0.333em;
+  }
+}
+
+.cw_favourite {
+  @include cw_icon_fontfamily();
+  font-size: $gutterHeight*1.25;
+  line-height: 1.0;
+  a.star {
+    display: inline;
+    cursor: pointer;
+    color: $grayLighter;
+    vertical-align: bottom;
+    &.remove_from_favorites {
+      display: none;
+      color: $orangeLight;
+      .cw-favourite-text {
+        color: $black;
+        background-color: $orangeLighter;
+        &:after {
+          border-right-color: $orangeLighter;
+        }
+      }
+    }
+    &:hover,
+    &:focus {
+      color: $orangeLight;
+      text-decoration: none;
+      .cw-favourite-text {
+        color: $black;
+        background-color: $orangeLighter;
+        &:after {
+          border-right-color: $orangeLighter;
+        }
+      }
+    }
+  }
+  .cw-favourite-text {
+    position: relative;
+    display: inline-block;
+    margin-top: 1px;
+    padding: 2px $gutterWidth/4;
+    background-color: $grayLighterer3;
+    color: $gray;
+    vertical-align: text-top;
+    @include font-size-xs();
+    @include tabular-figures;
+    border-radius: 2px;
+    &.hide {
+      display: none;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      left: -3px;
+      top: 6px;
+      height: 0;
+      overflow: hidden;
+      border-top: 3px solid transparent;
+      border-bottom: 3px solid transparent;
+      border-right: 3px solid $grayLighterer3;
+    }
+    #lot_list.hide_lot_nr_favorites & { // AB test "lot_nr_favorites"
+      display: none;
+    }
+  }
+  .cw-lot_detail.favorite &,
+  .cw-item-auctionlot.favorite & {
+    a.mark_as_favorite {
+      display: none;
+    }
+    a.remove_from_favorites {
+      display: inline;
+    }
+  }
+  body.cw_not_logged_in & {
+    display: none;
+  }
+  body.cw_not_logged_in & {
+    display: none;
+  }
+  .cw-item-auctionlot & {
+    visibility: hidden;
+    &.activated {
+      visibility: visible;
+    }
+  }
+  .normal &,
+  .compact & {
+    float: right;
+    margin: 0 0 0 ($gutterWidth / 2);
+    @include cw_mediaquery("mobile") {
+      margin-left: ($gutterWidth / 4);
+    }
+  }
+  .gallery &,
+  .cw-auction_lot_box & {
+    position: absolute;
+    z-index: $z_default + 2;
+    right: $gutterWidth/2;
+    top: $gutterHeight/2;
+    a {
+      color: $grayLighterer;
+      text-shadow: 0 0 1px rgba(0,0,0,1);
+      &.remove_from_favorites,
+      &:hover,
+      &:focus {
+        text-shadow: 0 0 1px rgba(0,0,0,0.5);
+      }
+    }
+  }
+}
+
+#cw-lot_offered_by {
+  img {
+    display: inline;
+  }
+}
+
+.cw-translate_switch {
+  padding: ($gutterHeight * 0.4) ($gutterWidth / 2);
+  border: 1px solid $grayLighterer2;
+  background-color: $grayLighterer;
+  cursor: pointer;
+  @include font-size-s();
+  text-align: center;
+  -webkit-user-select: none;
+  user-select: none;
+  .cw-auction & {
+    margin-top: ($gutterHeight * 1.5);
+  }
+  .cw-lot_content & {
+    margin-bottom: ($gutterHeight * 1.5);
+  }
+  .cw-lot .cw-tabs-content & {
+    background-color: $grayLighterer3;
+  }
+  .cw_icon_info {
+    line-height: 1.0;
+  }
+  a.cw-translate_switch__link {
+    margin-left: 1.25em;
+    text-decoration: none;
+    color: $blue;
+    white-space: nowrap;
+    @include font-weight-medium;
+    @include cw_mediaquery("mobile") {
+      display: block;
+      margin-left: 0;
+    }
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+  &:hover,
+  &:focus {
+    border-color: $grayLighter;
+  }
+  &:active {
+    opacity: 0.75;
+  }
+  .cw-translate_switch__show_original,
+  .cw-translate_switch__show_autotranslate {
+    display: none;
+  }
+  &.cw-translate_switch--show_original {
+    .cw-translate_switch__show_original {
+      display: block;
+    }
+  }
+  &.cw-translate_switch--show_autotranslate {
+    .cw-translate_switch__show_autotranslate {
+      display: block;
+    }
+  }
+}
+
+#lot_list {
+  .cw-item-auctionlot {
+    .cw-translate_lot {
+      float: right;
+      margin-left: ($gutterWidth / 2);
+      -webkit-user-select: none;
+      user-select: none;
+      @include cw_mediaquery("mobile") {
+        margin-left: ($gutterWidth / 4);
+      }
+      a {
+        width: 26px;
+        height: 22px;
+        overflow: hidden;
+        background-size: 26px 22px;
+        cursor: pointer;
+        &.cw-translate_lot__show_translation {
+          display: block;
+        }
+        &.cw-translate_lot__show_original {
+          display: none;
+        }
+        &.cw-translate_lot__show_translation,
+        &.cw-translate_lot__show_original:active {
+          background-image: url('/images/v3/icons/autotranslate-inactive@2x.png');
+        }
+        &.cw-translate_lot__show_original,
+        &.cw-translate_lot__show_translation:active {
+          background-image: url('/images/v3/icons/autotranslate-active@2x.png');
+        }
+      }
+    }
+    &.cw-autotranslate_active {
+      .cw-translate_lot {
+        a.cw-translate_lot__show_translation {
+          display: none;
+        }
+        a.cw-translate_lot__show_original {
+          display: block;
+        }
+      }
+    }
+  }
+  &.gallery {
+    .cw-item-auctionlot {
+      .cw-translate_lot {
+        float: none;
+        position: absolute;
+        z-index: ($z_default + 2);
+        right: ($gutterWidth / 2);
+        top: ($gutterHeight * 2);
+        margin: 0;
+        visibility: hidden;
+        body.cw_not_logged_in & {
+          top: ($gutterHeight / 2);
+        }
+      }
+      &:hover {
+        .cw-translate_lot {
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
+
+#cw-auction__related_auctions.more_auctions_dropdown {
+  position: relative;
+  z-index: ($z_menu - 1);
+  overflow: visible;
+  margin: 0;
+  background-color: $grayLighterer;
+  box-shadow: 0 1px 0 0 $shadow_color;
+  h2 {
+    position: relative;
+    z-index: ($z_menu - 1);
+    margin: 0;
+    padding: ($gutterHeight * 0.6) $gutterWidth ($gutterHeight * 0.55) ($gutterWidth / 2);
+    background-color: $grayLighterer;
+    @include font-size-s();
+    @include font-weight-light;
+    &:after {
+      @include cw_icon_fontfamily(1em);
+      content: '\e0bc';
+      position: absolute;
+      right: ($gutterWidth * 0.3);
+    }
+  }
+  ul.cw-list-thumb_list {
+    visibility: hidden;
+    height: 0;
+    transform: scale(1,0);
+    transform-origin: center top;
+    transition: transform 0.25s ease-in-out;
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: ($gutterHeight / 2) ($gutterWidth / 2) 0 ($gutterWidth / 2);
+    max-height: ($gutterHeight * 16) !important;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    background-color: $grayLighterer;
+    box-shadow: 0 1px 0 0 $shadow_color, 0 0 ($gutterHeight / 2) 0 $shadow_color;
+  }
+  &.open {
+    h2 {
+      &:after {
+        content: '\e0bd';
+      }
+    }
+    ul.cw-list-thumb_list {
+      visibility: visible;
+      height: auto;
+      transform: scale(1,1);
+    }
+  }
+}

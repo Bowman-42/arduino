@@ -1,0 +1,72 @@
+// #======================================#
+// #     _____       _ _       _  _       #
+// #    |  __ \     (_) |     | || |      #
+// #    | |__) |__ _ _| |___  | || |_     #
+// #    |  _  // _` | | / __| |__   _|    #
+// #    | | \ \ (_| | | \__ \    | |      #
+// #    |_|  \_\__,_|_|_|___/    |_|      #
+// #                                      #
+// #======================================#
+
+// Blue
+$blue:                  #00aeef;
+$blueMid:               #c6edfb;
+$blueLight:             #dff5fc;
+$blueLighter:           #e8f8fe;
+$blueDark:              #15617F;
+$blueDarker:            #009cd6;
+
+// Gray
+$black:                 #000;
+$grayDark:              #222;
+$grayLessDark:          #333;
+$gray:                  #444;
+$grayMid:               #555;
+$grayLight:             #a3a3a3;
+$grayLighter:           #ccc;
+$grayLighterer2:        #dadada;
+$grayLighterer3:        #eaeaea;
+$grayLighterer:         #f5f5f5;
+$white:                 #fff;
+$shadow_color:          rgba(0,0,0,0.125);
+
+// Green
+$green:                 #33c514;
+$greenLight:            #85dc72;
+$greenLighter:          #eaf9e7;
+
+// Red
+$red:                   #c21214;
+$redLight:              #fbeced;
+
+// Orange
+$orange:                #ff7c2d;
+$orangeLight:           #ffbd96;
+$orangeLighter:         #ffefe6;
+
+// Yellow
+$yellowDark:            #ffce60;
+$yellow:                #fffbcc;
+$yellow_rgba:           rgba(255,240,192,0.75);
+
+// Other colors
+$blueFacebook:          #3B5998;
+$blueTwitter:           #55acee;
+
+
+
+.blue {
+  color: $blue !important;
+}
+.orange {
+  color: $orange !important;
+}
+.gray {
+  color: $grayLight !important;
+}
+.gray-dark {
+  color: $gray !important;
+}
+.gray-light {
+  color: $grayLighter !important;
+}

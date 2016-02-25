@@ -1,0 +1,175 @@
+// #======================================#
+// #     _____       _ _       _  _       #
+// #    |  __ \     (_) |     | || |      #
+// #    | |__) |__ _ _| |___  | || |_     #
+// #    |  _  // _` | | / __| |__   _|    #
+// #    | | \ \ (_| | | \__ \    | |      #
+// #    |_|  \_\__,_|_|_|___/    |_|      #
+// #                                      #
+// #======================================#
+
+// Christmas promo 2014
+@keyframes snow {
+  0% {background-position: 0px 0px;}
+  100% {background-position: 0px 177px;}
+}
+@-moz-keyframes snow {
+  0% {background-position: 0px 0px;}
+  100% {background-position: 0px 177px;}
+}
+@-webkit-keyframes snow {
+  0% {background-position: 0px 0px;}
+  100% {background-position: 0px 177px;}
+}
+@-ms-keyframes snow {
+  0% {background-position: 0px 0px;}
+  100% {background-position: 0px 177px;}
+}
+#cw-xmas_promo {
+  background-image: url('/images/christmas/snow-@2x.png');
+  background-position: left top;
+  background-repeat: repeat;
+  background-size: 176px 177px;
+  -webkit-animation: snow 6s linear infinite;
+  -moz-animation: snow 6s linear infinite;
+  -ms-animation: snow 6s linear infinite;
+  animation: snow 6s linear infinite;
+  html.lt-ie10 & {
+    background-image: url('/images/christmas/snow-@2x.gif');
+  }
+  @include cw_mediaquery("mobile") {
+    background-size: 88px 88px;
+  }
+  .cw-xmas_promo-tree {
+    .cw-xmas_promo-gifts {
+      counter-reset: gift_counter;
+      a {
+        counter-increment: gift_counter;
+        position: relative;
+        display: inline-block;
+        padding: $gutterWidth/2;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+        &:before {
+          content: counter(gift_counter);
+          position: absolute;
+          z-index: 1;
+          left: 0;
+          right: 0;
+          top: 50%;
+          text-align: center;
+          text-shadow: 0 -1px 0 $white, 1px 0 0 $white, 0 1px 0 $white, -1px 0 0 $white;
+          @include font-size-xl();
+          @include font-weight-bold;
+          @include cw_mediaquery("tablet_and_smaller") {
+            @include font-size-l();
+          }
+        }
+        &:hover,
+        &:focus,
+        &.cw-active {
+          background-color: $white;
+          text-decoration: none;
+          img {
+            @include scale(1.0965, 1.0965, 50%, 50%); // 114px > 125px
+          }
+        }
+        &.cw-hidden {
+          visibility: hidden;
+        }
+        img {
+          max-width: none;
+          -webkit-transition: -webkit-transform 0.2s ease-in-out;
+          transition: transform 0.2s ease-in-out;
+          @include cw_mediaquery("tablet_and_smaller") {
+            width: 76px;
+          }
+        }
+      }
+      .cw-counter-1,
+      .cw-counter-3 {
+        top: $gutterHeight*-3;
+        @include cw_mediaquery("tablet_and_smaller") {
+          top: $gutterHeight*-2;
+        }
+      }
+    }
+  }
+  .cw-xmas_promo-main {
+    .cw-centered {
+      padding-top: $gutterHeight*2;
+      @include cw_mediaquery("mobile") {
+        padding-top: 0;
+      }
+      h1 {
+        margin: 0 $gridColumnWidth*-1 $gutterHeight*2+10 $gridColumnWidth*-1;
+        @include cw_mediaquery("tablet_only") {
+          margin-bottom: $gutterHeight*1;
+        }
+        @include cw_mediaquery("mobile") {
+          margin: 0 0 $gutterHeight 0;
+        }
+      }
+      .cw-xmas_promo-choose {
+        @include font-size-xl();
+        @include font-weight-medium;
+        color: $blue;
+        padding-top: 30px;
+        padding-bottom: $gutterHeight/2 + 121;
+        background: url('/images/christmas/arrow.png') $gridColumnWidth bottom no-repeat;
+        @include cw_mediaquery("tablet_only") {
+          background-position: left bottom;
+        }
+        @include cw_mediaquery("mobile") {
+          background-image: none;
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+}
+#cw-voucher {
+  text-align: right;
+  background: url('/images/christmas/gift-big.png') left bottom no-repeat;
+  @include cw_mediaquery("mobile") {
+    background-size: 120px auto;
+  }
+  h1 {
+    margin: $gutterHeight*-1.5 $gutterWidth*-1.5 $gutterHeight*1.5 $gutterWidth*-1.5;
+    background-color: $blueLight;
+    color: $blue;
+    text-transform: uppercase;
+    text-align: center;
+    padding: $gutterHeight $gutterWidth;
+    @include font-size-xxl();
+    @include cw_mediaquery("mobile") {
+      margin: $gutterHeight*-1.25 $gutterWidth*-1.25 $gutterHeight*1.5 $gutterWidth*-1.25;
+      padding-top: $gutterHeight/2;
+      padding-bottom: $gutterHeight/2;
+      @include font-size-l();
+    }
+  }
+  .cw-intro {
+    color: $blue;
+    @include font-size-xxl();
+    line-height: 0.888889; // 32px
+    margin-bottom: $gutterHeight/2;
+    padding-left: 140px;
+    @include cw_mediaquery("mobile") {
+      padding-left: 0;
+      @include font-size-l(); // 18px
+      line-height: 1.0; // 18px
+    }
+    strong {
+      line-height: 0;
+      @include font-weight-bold;
+      @include cw_mediaquery("mobile") {
+      }
+    }
+    strong.gift5, strong.gift10 { display:none }
+  }
+  footer {
+    padding-top: $gutterHeight;
+  }
+}

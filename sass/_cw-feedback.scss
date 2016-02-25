@@ -1,0 +1,358 @@
+.cw-feedback {
+  fieldset {
+    display: inline-block;
+    border: 1px solid $grayLighterer2;
+    margin-bottom: $gutterHeight/2;
+    padding: $gutterHeight/4 $gutterWidth/2 0 $gutterWidth/2;
+    @include font-size-s();
+    legend {
+      padding: 0.333em $gutterWidth/2;
+      background-color: $grayLight;
+      color: $white;
+      @include font-size-xs();
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .form_row {
+      overflow: hidden;
+      margin-bottom: 0.25em;
+      padding-bottom: 0.25em;
+      border-bottom: 1px solid $grayLighterer2;
+      &:last-child {
+        border-bottom: none;
+      }
+      .label,
+      .field {
+        float: left;
+      }
+      .label label {
+        display: block;
+        width: $gridColumnWidth*2;
+        cursor: auto;
+      }
+    }
+  }
+  table.feedback {
+    width: 100%;
+    border-collapse: collapse;
+    @include cw_mediaquery("tablet_only") {
+      @include font-size-s();
+    }
+    @include cw_mediaquery("mobile") {
+      @include font-size-xxs();
+    }
+    td,
+    th {
+      border: 0;
+      padding: $gutterHeight/4 $gutterWidth/2;
+      border-bottom: solid $gutterHeight/4 $white;
+      margin: 0;
+      @include cw_mediaquery("tablet_and_smaller") {
+        padding: $gutterHeight/4 $gutterWidth/4;
+      }
+    }
+    th {
+      text-align: left;
+      border-bottom: none;
+      @include font-weight-medium;
+    }
+    td {
+      overflow:hidden;
+      @include cw_mediaquery("mobile") {
+        &:nth-child(3n) {
+          max-width: 7em;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+      &.date {
+        white-space: nowrap;
+      }
+      &.icon {
+        text-align: center;
+        @include cw_mediaquery("mobile") {
+          padding-right: 0;
+        }
+      }
+      &.response {
+        position: relative;
+        &:before {
+          position: absolute;
+          left: ($gutterWidth / 2);
+          top: ($gutterHeight / 4);
+          @include cw_icon_font("\e07f");
+          color: $gray;
+        }
+        padding-left: 2em;
+      }
+    }
+    tr.with_response {
+      td {
+        border: 0;
+      }
+    }
+    .type_1 { // positive
+      td {
+        background-color: $greenLighter;
+        color: $black;
+        &.icon {
+          &:before {
+            @include cw_icon_font("\e00f");
+            color: $greenLight;
+          }
+        }
+      }
+    }
+    .type_2 { // neutral
+      td {
+        background-color: $grayLighterer;
+        color: $gray;
+        &.icon {
+          &:before {
+            @include cw_icon_font("\e00f\e010");
+            color: $grayLighter;
+          }
+        }
+      }
+    }
+    .type_3 { // negative
+      td {
+        background-color: $redLight;
+        color: $red;
+        &.icon {
+          &:before {
+            @include cw_icon_font("\e010");
+            color: $red;
+          }
+        }
+      }
+    }
+  }
+  .global_translation_switch {
+    background-image: url('/images/icon-tip.gif');
+    background-color: $orangeLighter;
+    color: $black;
+    background-repeat: no-repeat;
+    background-position: $gutterWidth*0.75 center;
+    padding: $gutterHeight/2 $gutterWidth $gutterHeight/2 $gutterWidth*2.75;
+    margin-top: $gutterHeight/2;
+    margin-bottom: $gutterHeight/2;
+    @include cw_mediaquery("mobile") {
+      @include font-size-s();
+    }
+    .button_group {
+      display: inline-block;
+      white-space: nowrap;
+      input {
+        margin-left: 0.5em;
+        vertical-align: baseline;
+      }
+      label {
+        display: inline;
+        font-size: inherit;
+        @include font-weight-medium;
+      }
+    }
+  }
+  .multilingual {
+    .flash_tip {
+      display:none;
+      background-color: $red;
+      color: $white;
+      border: $gutterWidth/2 solid $black;
+    }
+    .notice {
+      opacity: 0.33;
+      color: $black;
+      @include font-size-xs();
+      @include font-weight-medium;
+      white-space: nowrap;
+      html.lt-ie9 & {
+        color: $orangeLight;
+      }
+    }
+  }
+  // new design!
+  .cw-feedback-header {
+    margin: ($gutterHeight * -1.5) ($gutterWidth * -1.5) 0 ($gutterWidth * -1.5);
+    padding: ($gutterHeight * 1.5) ($gutterWidth * 1.5);
+    background-color: $grayLighterer;
+    overflow: hidden;
+    h1 {
+      a {
+        text-decoration: underline;
+      }
+    }
+    table {
+      width: 100%;
+      margin: 0;
+      th,
+      td {
+        text-align: left;
+      }
+      img {
+        display: inline;
+      }
+      .cw-iconfont {
+        color: $greenLight;
+        vertical-align: baseline;
+      }
+      @include cw_mediaquery("mobile") {
+        @include font-size-s();
+        td {
+          white-space: nowrap;
+        }
+      }
+    }
+    .cw-feedback-overview {
+      margin: ($gutterHeight / 2) auto 0 auto;
+      max-width: ($gridColumnWidth * 3 - $gutterWidth);
+      text-align: center;
+      @include font-size-s();
+      @include flexbox_justify;
+      @include cw_mediaquery("mobile") {
+        margin-top: 0;
+      }
+      .cw-feedback-overview-item {
+        .cw-feedback-overview-count {
+          display: block;
+          @include font-size-normal();
+        }
+        .cw-iconfont {
+          display: block;
+          margin: ($gutterHeight / 4) 0;
+          @include font-size-l();
+        }
+        &.cw-feedback-overview-positive {
+          .cw-iconfont {
+            color: $greenLight;
+          }
+        }
+        &.cw-feedback-overview-neutral {
+          .cw-iconfont {
+            color: $grayLighter;
+          }
+        }
+        &.cw-feedback-overview-negative {
+          .cw-iconfont {
+            color: $red;
+          }
+        }
+      }
+    }
+  }
+  &.cw-feedback-b {
+    .global_translation_switch {
+      background-image: none;
+      padding: $gutterHeight/2 $gutterWidth $gutterHeight/2 $gutterWidth*2.75;
+      margin: 0 ($gutterWidth * -1.5);
+      padding: ($gutterHeight / 2) ($gutterWidth * 1.5);
+    }
+  }
+  .cw-feedback-content {
+    padding: ($gutterHeight * 1) 0 0 0;
+    table {
+      width: 100%;
+      tr {
+        border-bottom: 1px solid $grayLighterer3;
+        td {
+          padding-top: ($gutterHeight * 0.75 - 1);
+          padding-bottom: ($gutterHeight * 0.75);
+          padding-right: $gutterWidth;
+          &:first-child {
+            width: 1%;
+          }
+          &.cw-feedback-icon {
+            width: 1%;
+            text-align: center;
+          }
+          .cw-feedback-name {
+            @include cw_mediaquery("mobile") {
+              @include font-weight-medium;
+            }
+          }
+          .cw-feedback-date {
+            white-space: nowrap;
+            color: $grayLighter;
+            @include font-size-s();
+          }
+          .cw-feedback-response {
+            position: relative;
+            margin-top: ($gutterHeight / 2);
+            &:before {
+              position: absolute;
+              left: 2px;
+              top: -1px;
+              @include cw_icon_font("\e07f");
+              color: $gray;
+            }
+            padding-left: 1.5em;
+          }
+        }
+        &.cw-feedback-type_1 { // positive
+          td {
+            &.cw-feedback-icon {
+              &:before {
+                @include cw_icon_font("\e00f");
+                color: $greenLight;
+              }
+            }
+          }
+        }
+        &.cw-feedback-type_2 { // neutral
+          td {
+            &.cw-feedback-icon {
+              &:before {
+                @include cw_icon_font("\e00f\e010");
+                color: $grayLighter;
+              }
+            }
+          }
+        }
+        &.cw-feedback-type_3 { // negative
+          td {
+            &.cw-feedback-icon {
+              &:before {
+                @include cw_icon_font("\e010");
+                color: $red;
+              }
+            }
+          }
+        }
+      }
+      @include cw_mediaquery("mobile") {
+        display: block;
+        tbody,
+        tr,
+        td {
+          display: block;
+        }
+        tr {
+          padding-top: ($gutterHeight * 0.75 - 1);
+          padding-bottom: ($gutterHeight * 0.75);
+          td {
+            padding: 0;
+            &:first-child {
+              float: left;
+              width: auto;
+            }
+            &.cw-feedback-icon {
+              float: right;
+              width: auto;
+              @include font-size-xl();
+            }
+            &:last-child {
+              clear: both;
+            }
+          }
+        }
+      }
+    }
+    .cw-pager {
+      @include cw_mediaquery("mobile") {
+        @include font-size-s();
+      }
+    }
+  }
+}

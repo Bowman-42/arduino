@@ -1,0 +1,308 @@
+// #======================================#
+// #     _____       _ _       _  _       #
+// #    |  __ \     (_) |     | || |      #
+// #    | |__) |__ _ _| |___  | || |_     #
+// #    |  _  // _` | | / __| |__   _|    #
+// #    | | \ \ (_| | | \__ \    | |      #
+// #    |_|  \_\__,_|_|_|___/    |_|      #
+// #                                      #
+// #======================================#
+
+@import "mixins";
+@import "variables";
+
+// never define font sizes and weights here; always use the defined mixins!
+// ---------------------------------------------------------------------------
+body, input, textarea, button {
+  font-family: "ProximaNova", "Helvetica Neue", "Arial", sans-serif;
+  @include font-size-normal();
+  @include font-weight-light;
+  html.lt-ie9 & {
+    font-family: "ProximaNova-Light", "Helvetica Neue", "Arial", sans-serif;
+    font-weight: normal;
+  }
+}
+input, textarea, button, select {
+  font-family: "ProximaNova", "Helvetica Neue", "Arial", sans-serif;
+  font-size: 100%;
+  @include font-weight-light;
+}
+p, ul, ol, table, dl, pre {
+  @include margin-normal;
+  html &.compact {
+    margin-bottom: $gutterHeight/2;
+  }
+  html &.no-margin {
+    margin-bottom: 0;
+  }
+  .cw-fontsize-s & {
+    @include margin-s;
+  }
+}
+*:last-child > p:last-child,
+*:last-child > ul:last-child,
+*:last-child > ol:last-child,
+*:last-child > table:last-child,
+*:last-child > dl:last-child {
+  margin-bottom: 0;
+}
+html.mod-no-touch {
+  // !!! Not for touch, because Android can't handle this, doesn't display font at all... :(
+  text-rendering: optimizelegibility;
+}
+
+.cw-fontsize-s { @include font-size-s(); }
+.cw-fontsize-normal { @include font-size-normal(); }
+.cw-fontsize-l { @include font-size-l(); }
+.cw-fontsize-xl { @include font-size-xl(); }
+.cw-fontsize-xxl { @include font-size-xxl(); }
+.cw-fontweight-light { @include font-weight-light; }
+.cw-fontweight-medium { @include font-weight-medium; }
+.cw-fontweight-bold { @include font-weight-bold; }
+.cw-fontstyle-italic { @include font-style-italic; }
+
+h1 {
+  @include font-size-xxl(true);
+  @include font-weight-bold;
+  @include cw_mediaquery("mobile") {
+    @include font-size-xl(true);
+  }
+  html &.cw-has_tip {
+    overflow: hidden;
+    padding-left: $gridColumnWidth - $gutterWidth;
+    @include font-size-l();
+    strong {
+      display: block;
+      float: left;
+      width: $gridColumnWidth - $gutterWidth*1.5;
+      margin-left: $gridColumnWidth*-1 + $gutterWidth;
+      color: $gray;
+      text-transform: uppercase;
+    }
+  }
+}
+.cw-container-smaller h1,
+.cw_inline_modal h1,
+h2 {
+  @include font-size-xl(true);
+  @include font-weight-medium;
+  @include cw_mediaquery("mobile") {
+    @include font-size-l(true);
+  }
+}
+html .cw-item-auction h2 {
+  @include font-size-xl("compact");
+  @include font-weight-medium;
+  @include cw_mediaquery("mobile") {
+    @include font-size-normal();
+    margin-bottom: 0;
+  }
+}
+html .cw-item-job h2 {
+  @include font-size-l();
+  @include font-weight-medium;
+  margin-bottom: 0;
+}
+.cw-list-item h2,
+.cw-tiles-small .cw-list-item h2 {
+  @include font-size-normal(true);
+  @include font-weight-medium;
+}
+.cw-tiles .cw-item-auctionlot {
+  .cw-current_bid {
+    @include font-size-xl();
+    @include font-weight-medium;
+    @include cw_mediaquery("mobile") {
+      @include font-size-l();
+      @include font-weight-medium;
+    }
+  }
+  h2 {
+    @include font-weight-light;
+  }
+}
+#managed_content h1 {
+  @include font-size-l("compact");
+  @include font-weight-medium;
+}
+h3 {
+  @include font-size-l("relaxed");
+  @include font-weight-medium;
+}
+.cw-content h3,
+h4, h5, h6 {
+  font-size: 1em;
+  line-height: inherit;
+  @include font-weight-medium;
+  margin: 0;
+}
+.cw-box h2 {
+  margin-bottom: $gutterHeight/4;
+}
+.cw-body_text h2,
+#managed_content h3,
+.cw-columns-column h2,
+.cw_main_footer h2 {
+  @include font-size-l(true);
+}
+header p:last-child {
+  margin-bottom: $gutterHeight*2;
+  @include cw_mediaquery("mobile") {
+    margin-bottom: $gutterHeight;
+  }
+}
+small,
+.cw-fontsize-xs,
+.small {
+  @include font-size-xs();
+  h1 &,
+  h2 &,
+  h3 & {
+    @include font-size-normal();
+  }
+}
+.cw_large_font {
+  @include font-size-xl();
+  @include font-weight-medium;
+}
+strong, b {
+  @include font-weight-medium;
+}
+.cw-centered,
+.text-center {
+  text-align: center;
+  img {
+    margin: 0 auto;
+  }
+}
+.cw-align-right {
+  text-align: right;
+}
+.cw-nowrap {
+  white-space: nowrap;
+}
+.padding {
+  padding: $gutterHeight 0;
+}
+.cw-tab-fig {
+  @include tabular-figures;
+}
+.cw-old-fig {
+  @include oldstyle-figures;
+}
+pre,
+code {
+  font-family: 'Consolas', 'Andale mono', monospace;
+}
+code {
+  font-size: 0.875em;
+}
+
+table {
+  border-collapse: collapse;
+  margin-right: $gutterWidth/-2;
+  caption {
+    @include font-size-s();
+    text-transform: uppercase;
+    color: $grayLight;
+    text-align: left;
+  }
+  th, td {
+    text-align: left;
+    vertical-align: top;
+    padding-right: $gutterWidth/2;
+    &.cw-align-right {
+      text-align: right;
+    }
+  }
+  th {
+    @include font-weight-light;
+  }
+  td {
+    &.cw-tab-fig {
+      width: 1%;
+      white-space: nowrap;
+      text-align: right;
+    }
+  }
+  &.cw-spacious {
+    th, td {
+      padding-bottom: $gutterHeight/2;
+    }
+  }
+  &.table-striped {
+    tbody {
+      tr:nth-child(even) {
+        background-color: rgba(0,0,0,0.05);
+      }
+    }
+  }
+  &.cw-bid_table {
+    width: 100%;
+    @include cw_mediaquery("mobile") {
+      @include font-size-s();
+    }
+    thead {
+      th {
+        border-bottom: 1px solid $grayLighterer2;
+        @include font-style-italic;
+      }
+    }
+    tbody {
+      td {
+        white-space: nowrap;
+        &:last-child {
+          @include font-weight-medium;
+        }
+      }
+    }
+  }
+  &.cw-formatted {
+    width: 100%;
+    caption {
+      padding: 0 ($gutterWidth / 2) ($gutterHeight / 4 - 1) ($gutterWidth / 2);
+      color: inherit;
+    }
+    th, td {
+      padding: ($gutterHeight / 4) ($gutterWidth / 2) ($gutterHeight / 4 - 1) ($gutterWidth / 2);
+      border: 1px solid $grayLighterer2;
+      .cw-bg-lightblue & {
+        border-color: $white;
+      }
+    }
+    thead {
+      th {
+        @include font-weight-medium;
+        background-color: $grayLighterer3;
+        .cw-bg-lightblue & {
+          background-color: $blueMid;
+        }
+      }
+    }
+    tbody {
+      th {
+        .cw-bg-lightblue & {
+          background-color: $blueLighter;
+        }
+      }
+    }
+  }
+  &.cw-mobile-untable {
+    @include cw_mediaquery("mobile") {
+      tr, th, td {
+        display: block;
+      }
+      tr {
+        margin-bottom: ($gutterHeight / 2);
+      }
+      .cw-nowrap {
+        white-space: normal;
+      }
+      &.cw-formatted {
+        th, td {
+          margin-bottom: -1px;
+        }
+      }
+    }
+  }
+}
